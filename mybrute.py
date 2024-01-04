@@ -12,6 +12,12 @@ ACCOUNTS = os.getenv('ACCOUNTS')
 
 accountsArray = ACCOUNTS.split(", ")
 
+foundIndex = False
+while foundIndex == False:
+    startAccount = int(input("Please enter the index of the account you want to start by (e.g. 0) > "))
+
+    if startAccount >= 0 and startAccount < len(accountsArray):
+        foundIndex = True
 
 driver = webdriver.Chrome()
 
