@@ -6,6 +6,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 
+startTime = time.time()
+
 load_dotenv()
 PASSWORD = os.getenv('PASSWORD')
 ACCOUNTS = os.getenv('ACCOUNTS')
@@ -22,3 +24,6 @@ while foundIndex == False:
 driver = webdriver.Chrome()
 
 driver.quit()
+
+executionTime = time.time() - startTime
+print("\n--- All accounts has been processed in {} seconds. ---".format(round(executionTime, 2)))
