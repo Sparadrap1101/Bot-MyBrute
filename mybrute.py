@@ -11,3 +11,8 @@ PASSWORD = os.getenv('PASSWORD')
 ACCOUNTS = os.getenv('ACCOUNTS')
 
 accountsArray = ACCOUNTS.split(", ")
+
+
+driver = webdriver.Chrome()
+
+driver.quit()
