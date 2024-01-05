@@ -38,6 +38,12 @@ for i in range(len(accountsArray) - startAccount):
 
     time.sleep(1)
 
+    driver.get("https://brute.eternaltwin.org/")
+    loginButton = driver.find_element(By.CLASS_NAME,"MuiButtonBase-root")
+    loginButton.click()
+
+    time.sleep(3)
+
 driver.quit()
 
 executionTime = time.time() - startTime
