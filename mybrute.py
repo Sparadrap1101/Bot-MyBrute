@@ -23,6 +23,11 @@ while foundIndex == False:
 
 driver = webdriver.Chrome()
 
+for i in range(len(accountsArray) - startAccount):
+    bruteNames = accountsArray[i + startAccount].split(" ")
+    print("\nAccount {}: Brute names = {}".format(i + startAccount, bruteNames))
+
+
 driver.quit()
 
 executionTime = time.time() - startTime
