@@ -27,6 +27,16 @@ for i in range(len(accountsArray) - startAccount):
     bruteNames = accountsArray[i + startAccount].split(" ")
     print("\nAccount {}: Brute names = {}".format(i + startAccount, bruteNames))
 
+    driver.get("https://eternaltwin.org/login")
+    loginForm = driver.find_element(By.CLASS_NAME,"ng-pristine")
+    username = loginForm.find_element(By.NAME, "login")
+    username.send_keys(bruteNames[0])
+    password = loginForm.find_element(By.NAME, "password")
+    password.send_keys(PASSWORD)
+    button = loginForm.find_element(By.NAME, "sign_in")
+    button.click()
+
+    time.sleep(1)
 
 driver.quit()
 
