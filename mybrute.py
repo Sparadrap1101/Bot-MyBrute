@@ -44,6 +44,16 @@ for i in range(len(accountsArray) - startAccount):
 
     time.sleep(3)
 
+    accountButton = driver.find_element(By.CLASS_NAME,"MuiFab-primary")
+    action = ActionChains(driver)
+    action.move_to_element(accountButton).perform()
+
+    deconnexion = driver.find_element(By.ID,"Compte-action-0")
+    deconnexionButton = deconnexion.find_element(By.TAG_NAME, "button")
+    deconnexionButton.click()
+
+    time.sleep(2)
+
 driver.quit()
 
 executionTime = time.time() - startTime
