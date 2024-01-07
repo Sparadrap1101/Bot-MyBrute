@@ -51,6 +51,12 @@ for i in range(len(accountsArray) - startAccount):
 
         time.sleep(2)
 
+        nextTournament = driver.find_element(By.CLASS_NAME, "css-1rb3pee")
+        if not nextTournament.text == "Brute inscrite.":
+
+        else: 
+            print("Already registered in the tournament.")
+
     accountButton = driver.find_element(By.CLASS_NAME,"MuiFab-primary")
     action = ActionChains(driver)
     action.move_to_element(accountButton).perform()
