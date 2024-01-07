@@ -53,6 +53,11 @@ for i in range(len(accountsArray) - startAccount):
 
         nextTournament = driver.find_element(By.CLASS_NAME, "css-1rb3pee")
         if not nextTournament.text == "Brute inscrite.":
+            findTournament = driver.find_element(By.CLASS_NAME, "css-1l4w6pd")
+            tournament = findTournament.find_element(By.TAG_NAME, "a")
+            tournament.click()
+            
+            time.sleep(2)
 
         else: 
             print("Already registered in the tournament.")
