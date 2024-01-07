@@ -71,6 +71,14 @@ for i in range(len(accountsArray) - startAccount):
 
             time.sleep(2)
 
+            try:
+                tournamentRegistration = driver.find_element(By.CLASS_NAME, "css-yb6hwx")
+                tournamentRegistration.click()
+
+                time.sleep(1)
+            except:
+                print("TOURNAMENT REGISTRATION FAILED")
+
         else: 
             print("Already registered in the tournament.")
 
