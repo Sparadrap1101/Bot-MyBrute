@@ -44,9 +44,18 @@ for i in range(len(accountsArray) - startAccount):
 
     time.sleep(3)
 
+    for j in range(3):
+        print("\n{} is working...".format(bruteNames[j + 1]))
+
+        driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
+
+        time.sleep(2)
+
     accountButton = driver.find_element(By.CLASS_NAME,"MuiFab-primary")
     action = ActionChains(driver)
     action.move_to_element(accountButton).perform()
+
+    time.sleep(1)
 
     deconnexion = driver.find_element(By.ID,"Compte-action-0")
     deconnexionButton = deconnexion.find_element(By.TAG_NAME, "button")
