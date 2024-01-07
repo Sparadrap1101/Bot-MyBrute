@@ -59,6 +59,18 @@ for i in range(len(accountsArray) - startAccount):
             
             time.sleep(2)
 
+            try:
+                tournamentSeen = driver.find_element(By.CLASS_NAME, "css-9w9xg7")
+                tournamentSeen.click()
+
+                time.sleep(2)
+            except:
+                print("TOURNAMENT ALREADY SEEN")
+
+            driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
+
+            time.sleep(2)
+
         else: 
             print("Already registered in the tournament.")
 
