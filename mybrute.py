@@ -87,7 +87,14 @@ for i in range(len(accountsArray) - startAccount):
         fightsWonBefore = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
 
         while hasFightsLeft:
+            findFight = driver.find_element(By.CLASS_NAME, "css-i9gxme")
+            fight = findFight.find_element(By.TAG_NAME, "a")
+            nextAction = fight.get_attribute("href")
 
+            if nextAction == "https://brute.eternaltwin.org/{}/level-up".format(bruteNames[j + 1]):
+                print("{} NEEDS TO LEVEL UP!".format(bruteNames[j + 1]))
+                hasFightsLeft = False
+        
     accountButton = driver.find_element(By.CLASS_NAME,"MuiFab-primary")
     action = ActionChains(driver)
     action.move_to_element(accountButton).perform()
