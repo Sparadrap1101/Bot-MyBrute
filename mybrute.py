@@ -22,6 +22,8 @@ while foundIndex == False:
         foundIndex = True
 
 driver = webdriver.Chrome()
+driver.set_window_position(0, 0)
+driver.set_window_size(1000, 850)
 
 for i in range(len(accountsArray) - startAccount):
     bruteNames = accountsArray[i + startAccount].split(" ")
