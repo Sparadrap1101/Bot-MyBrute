@@ -95,6 +95,14 @@ for i in range(len(accountsArray) - startAccount):
                 print("{} NEEDS TO LEVEL UP!".format(bruteNames[j + 1]))
                 hasFightsLeft = False
         
+        if fightCounter == 0:
+            print("{} can't fight anymore, go to the next Brute.".format(bruteNames[j + 1]))
+        else:
+            fightsWonAfter = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
+            wins = fightsWonAfter - fightsWonBefore
+
+            print("{} is done. He won {}/{} fights!".format(bruteNames[j + 1], wins, fightCounter))
+
     accountButton = driver.find_element(By.CLASS_NAME,"MuiFab-primary")
     action = ActionChains(driver)
     action.move_to_element(accountButton).perform()
