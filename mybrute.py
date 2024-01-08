@@ -82,6 +82,12 @@ for i in range(len(accountsArray) - startAccount):
         else: 
             print("Already registered in the tournament.")
 
+        hasFightsLeft = True
+        fightCounter = 0
+        fightsWonBefore = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
+
+        while hasFightsLeft:
+
     accountButton = driver.find_element(By.CLASS_NAME,"MuiFab-primary")
     action = ActionChains(driver)
     action.move_to_element(accountButton).perform()
