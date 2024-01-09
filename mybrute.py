@@ -106,6 +106,12 @@ for i in range(len(accountsArray) - startAccount):
             if nextAction == "https://brute.eternaltwin.org/{}/level-up".format(bruteNames[j + 1]):
                 print("{} NEEDS TO LEVEL UP!".format(bruteNames[j + 1]))
                 hasFightsLeft = False
+            else:
+                stillFights = findFight.find_element(By.CLASS_NAME, "css-ltdlwq")
+
+                if stillFights.text == "{} se repose.".format(bruteNames[j + 1]):
+                    hasFightsLeft = False
+                else:
         
         if fightCounter == 0:
             print("{} can't fight anymore, go to the next Brute.".format(bruteNames[j + 1]))
