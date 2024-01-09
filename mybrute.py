@@ -121,9 +121,9 @@ for i in range(len(accountsArray) - startAccount):
 
     time.sleep(1)
 
-    deconnexion = driver.find_element(By.ID,"Compte-action-0")
-    deconnexionButton = deconnexion.find_element(By.TAG_NAME, "button")
-    deconnexionButton.click()
+    logout = driver.find_element(By.ID,"Compte-action-0")
+    logoutButton = logout.find_element(By.TAG_NAME, "button")
+    logoutButton.click()
 
     time.sleep(2)
 
