@@ -127,6 +127,15 @@ for i in range(len(accountsArray) - startAccount):
                         runFight.click()
 
                         time.sleep(2.5)
+
+                        fightCounter += 1
+
+                    except:
+                        print("FIGHT FAILED")
+            
+                    driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
+
+                    time.sleep(1.5)
         
         if fightCounter == 0:
             print("{} can't fight anymore, go to the next Brute.".format(bruteNames[j + 1]))
