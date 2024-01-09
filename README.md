@@ -63,3 +63,23 @@ $ cp .env.example .env
 ```
 
 - Open the new `.env` file created and replace the templates by your `password` & `bruteNames` as shown in the file.
+
+## Run Bot
+
+All is set-up! You can now run the bot each time you want to automate your gameplay:
+
+- Make sure the MyBrute game language is set to French.
+
+- Open terminal and go to this folder:
+
+```
+$ cd <YourPath>/Bot-MyBrute
+```
+
+- Run the bot:
+
+```
+$ python3 mybrute.py
+```
+
+When a brute needs to level up, you will receive the notification `{BruteName} NEEDS TO LEVEL UP`, and the bot will go to the next Brute. You can then level up the brute yourself and restart the bot starting with the account index you want in order to finish the remaining fights.
