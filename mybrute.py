@@ -53,38 +53,48 @@ for i in range(len(accountsArray) - startAccount):
 
         time.sleep(2)
 
-        nextTournament = driver.find_element(By.CLASS_NAME, "css-1rb3pee")
-        if not nextTournament.text == "Brute inscrite.":
-            findTournament = driver.find_element(By.CLASS_NAME, "css-1l4w6pd")
-            tournament = findTournament.find_element(By.TAG_NAME, "a")
-            tournament.click()
-            
-            time.sleep(2)
+        hasFightsLeft = True
 
-            try:
-                tournamentSeen = driver.find_element(By.CLASS_NAME, "css-9w9xg7")
-                tournamentSeen.click()
+        try:
+            getRankUp = driver.find_element(By.CLASS_NAME, "css-v3tyeg")
+            hasFightsLeft = False
+
+            print("{} WINS A TOURNAMENT! HE CAN RANK UP!".format(bruteNames[j + 1]))
+        except:
+            nextTournament = driver.find_element(By.CLASS_NAME, "css-1rb3pee")
+            if not nextTournament.text == "Brute inscrite.":
+                findTournament = driver.find_element(By.CLASS_NAME, "css-1l4w6pd")
+                tournament = findTournament.find_element(By.TAG_NAME, "a")
+                tournament.click()
+                
+                time.sleep(2)
+
+                try:
+                    tournamentSeen = driver.find_element(By.CLASS_NAME, "css-9w9xg7")
+                    tournamentSeen.click()
+
+                    time.sleep(2)
+                except:
+                    print("TOURNAMENT ALREADY SEEN")
+
+                driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
 
                 time.sleep(2)
-            except:
-                print("TOURNAMENT ALREADY SEEN")
 
-            driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
+                try:
+                    getRankUp = driver.find_element(By.CLASS_NAME, "css-v3tyeg")
+                    hasFightsLeft = False
 
-            time.sleep(2)
+                    print("{} WINS A TOURNAMENT! HE CAN RANK UP!".format(bruteNames[j + 1]))
+                except:
+                    tournamentRegistration = driver.find_element(By.CLASS_NAME, "css-yb6hwx")
+                    tournamentRegistration.click()
 
-            try:
-                tournamentRegistration = driver.find_element(By.CLASS_NAME, "css-yb6hwx")
-                tournamentRegistration.click()
+                    time.sleep(1)
+                    
+            else: 
+                print("Already registered in the tournament.")
 
-                time.sleep(1)
-            except:
-                print("TOURNAMENT REGISTRATION FAILED")
-
-        else: 
-            print("Already registered in the tournament.")
-
-        hasFightsLeft = True
         fightCounter = 0
         fightsWonBefore = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
 
