@@ -15,7 +15,7 @@ With this bot, you can xp your game character without any actions.
 Clone the repository:
 
 ```
-$ git clone
+$ git clone https://github.com/Sparadrap1101/Bot-MyBrute
 ```
 
 ## Set-up
