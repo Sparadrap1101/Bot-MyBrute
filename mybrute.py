@@ -144,3 +144,55 @@ def ProceedAccounts(startAccount):
 
     driver.quit()
 
+
+if __name__ == "__main__":
+
+    startTime = time.time()
+
+    load_dotenv()
+    PASSWORD = os.getenv('PASSWORD')
+    BASIC_ACCOUNTS = os.getenv('BASIC_ACCOUNTS')
+    BEST_ACCOUNTS = os.getenv('BEST_ACCOUNTS')
+
+    basicAccountsArray = BASIC_ACCOUNTS.split(", ")
+    bestAccountsArray = BEST_ACCOUNTS.split(", ")
+
+    makeBests = input("Do you want to fight with your best brutes ? (y/n) > ")
+    if makeBests == "y":
+        accountsArray = basicAccountsArray + bestAccountsArray
+    else:
+        accountsArray = basicAccountsArray
+
+    foundIndex = False
+    while foundIndex == False:
+        startAcc = int(input("Please enter the index of the account you want to start by (e.g. 0) > "))
+
+        if startAcc >= 0 and startAcc < len(accountsArray):
+            foundIndex = True
+    
+    ProceedAccounts(startAcc)
+
+    #thread1 = threading.Thread(target=ProceedAccounts, args=(startAcc,))
+    #thread2 = threading.Thread(target=ProceedAccounts, args=(1,))
+    #thread3 = threading.Thread(target=ProceedAccounts, args=(2,))
+    #thread4 = threading.Thread(target=ProceedAccounts, args=(3,))
+
+    #thread1.start()
+    #thread2.start()
+    #thread3.start()
+    #thread4.start()
+    #print("Closed {}".format(thread1))
+    #print("Closed {}".format(thread2))
+    #print("Closed {}".format(thread3))
+    #print("Closed {}".format(thread4))
+
+    time.sleep(2)
+
+    #thread1.join()
+    #thread2.join()
+    #thread3.join()
+    #thread4.join()
+    #print("Closed {}".format(thread1))
+
+    executionTime = time.time() - startTime
+    print("\n--- All accounts has been processed in {} seconds. ---".format(round(executionTime, 2)))
