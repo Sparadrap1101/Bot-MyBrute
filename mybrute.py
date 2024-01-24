@@ -86,3 +86,61 @@ def ProceedAccounts(startAccount):
 
             fightCounter = 0
             fightsWonBefore = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
+
+            while hasFightsLeft:
+                try:
+                    driver.find_element(By.CLASS_NAME, "css-1dbhieh")
+                    print("{} NEEDS TO LEVEL UP!".format(bruteNames[j + 1]))
+                    hasFightsLeft = False
+                except:
+                    try:
+                        driver.find_element(By.CLASS_NAME, "css-vbasy3")
+
+                        try:
+                            driver.get("https://brute.eternaltwin.org/{}/arena".format(bruteNames[j + 1]))
+
+                            time.sleep(1.5)
+
+                            randomOpponent = random.randint(0, 5)
+                            opponents = driver.find_elements(By.CLASS_NAME, "css-rpybyc")
+                            opponents[randomOpponent].click()
+
+                            time.sleep(1)
+
+                            runFight = driver.find_element(By.CLASS_NAME, "css-1e0h3j1")
+                            runFight.click()
+
+                            time.sleep(2.5)
+
+                            fightCounter += 1
+                        except:
+                            print("FIGHT FAILED")
+
+                        driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
+
+                        time.sleep(1.5)
+                    except:
+                        hasFightsLeft = False
+            
+            if fightCounter == 0:
+                print("{} can't fight anymore, go to the next Brute.".format(bruteNames[j + 1]))
+            else:
+                fightsWonAfter = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
+                wins = fightsWonAfter - fightsWonBefore
+
+                print("{} is done. He won {}/{} fights!".format(bruteNames[j + 1], wins, fightCounter))
+
+        accountButton = driver.find_element(By.CLASS_NAME,"MuiFab-primary")
+        action = ActionChains(driver)
+        action.move_to_element(accountButton).perform()
+
+        time.sleep(1)
+
+        logout = driver.find_element(By.ID,"Compte-action-0")
+        logoutButton = logout.find_element(By.TAG_NAME, "button")
+        logoutButton.click()
+
+        time.sleep(2)
+
+    driver.quit()
+
