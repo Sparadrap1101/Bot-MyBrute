@@ -125,10 +125,14 @@ def ProceedAccounts(startAccount):
             if fightCounter == 0:
                 print("{} can't fight anymore, go to the next Brute.".format(bruteNames[j + 1]))
             else:
-                fightsWonAfter = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
-                wins = fightsWonAfter - fightsWonBefore
+                try:
+                    fightsWonAfter = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
 
-                print("{} is done. He won {}/{} fights!".format(bruteNames[j + 1], wins, fightCounter))
+                    wins = fightsWonAfter - fightsWonBefore
+
+                    print("{} is done. He won {}/{} fights!".format(bruteNames[j + 1], wins, fightCounter))
+                except:
+                    print("FIGHT COUNTER FAILED")
 
         accountButton = driver.find_element(By.CLASS_NAME,"MuiFab-primary")
         action = ActionChains(driver)
