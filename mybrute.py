@@ -85,7 +85,11 @@ def ProceedAccounts(startAccount):
                     print("TOURNAMENT REGISTRATION FAILED!")
 
             fightCounter = 0
-            fightsWonBefore = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
+            try:
+                fightsWonBefore = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
+            except:
+                fightsWonBefore = 0
+                print("FIGHT COUNTER FAILED")
 
             while hasFightsLeft:
                 try:
