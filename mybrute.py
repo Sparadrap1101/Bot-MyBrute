@@ -41,7 +41,7 @@ def ProceedAccounts(startAccount):
             print("LOGIN ACCOUNT FAILED")
 
         driver.get("https://brute.eternaltwin.org/")
-        loginButton = driver.find_element(By.CLASS_NAME,"MuiButtonBase-root")
+        loginButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"MuiButtonBase-root")))
         loginButton.click()
         del loginButton
 
@@ -235,3 +235,13 @@ if __name__ == "__main__":
 
     executionTime = time.time() - startTime
     print("\n--- All accounts has been processed in {} seconds. ---".format(round(executionTime, 2)))
+
+
+# Next steps:
+## Donner le nbre de win sur les tournois et contre quel lvl j'ai perdu ?
+## Gérer les combats contre le boss de clan sur certains compte (autre script ? Qqc de spécial dans le 'accounts' ?)
+## Essayer d'optimiser/réduire le temps en restant safe sur les délais de chargement
+## Faire du Threading pour essayer de lancer l'exécution de plusieurs compte en même temps
+## Faire un mode à activer ou non pour passer automatiquement les levels
+## Régler problème de déconnexion qui bug quand tu fais autre chose en même temps
+## Gérer le cas où y'a 4+ brutes sur un compte
