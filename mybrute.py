@@ -5,10 +5,15 @@ import threading
 from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 
 def ProceedAccounts(startAccount):
-    driver = webdriver.Chrome()
+    options = Options()
+    prefs = {"profile.managed_default_content_settings.images": 2}
+    options.add_experimental_option("prefs", prefs)
+    options.add_argument("--disable-javascript")
+    driver = webdriver.Chrome(options=options)
     driver.set_window_position(0, 0)
     driver.set_window_size(1040, 850)
 
