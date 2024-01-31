@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
 def ProceedAccounts(startAccount):
@@ -13,6 +15,7 @@ def ProceedAccounts(startAccount):
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
     options.add_argument("--disable-javascript")
+
     driver = webdriver.Chrome(options=options)
     driver.set_window_position(0, 0)
     driver.set_window_size(1040, 850)
@@ -21,16 +24,21 @@ def ProceedAccounts(startAccount):
         bruteNames = accountsArray[i + startAccount].split(" ")
         print("\nAccount {}: Brute names = {}".format(i + startAccount, bruteNames))
 
-        driver.get("https://eternaltwin.org/login")
-        loginForm = driver.find_element(By.CLASS_NAME,"ng-pristine")
-        username = loginForm.find_element(By.NAME, "login")
-        username.send_keys(bruteNames[0])
-        password = loginForm.find_element(By.NAME, "password")
-        password.send_keys(PASSWORD)
-        button = loginForm.find_element(By.NAME, "sign_in")
-        button.click()
-
-        time.sleep(1)
+        try:
+            driver.get("https://eternaltwin.org/login")
+            loginForm = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"ng-pristine")))
+            username = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "login")))
+            username.send_keys(bruteNames[0])
+            password = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "password")))
+            password.send_keys(PASSWORD)
+            button = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "sign_in")))
+            button.click()
+            del loginForm
+            del username
+            del password
+            del button
+        except:
+            print("LOGIN ACCOUNT FAILED")
 
         driver.get("https://brute.eternaltwin.org/")
         loginButton = driver.find_element(By.CLASS_NAME,"MuiButtonBase-root")
@@ -62,7 +70,7 @@ def ProceedAccounts(startAccount):
                         tournament.click()
                         del findTournament
                         del tournament
-                        
+
                         time.sleep(4)
 
                         try:
@@ -139,7 +147,7 @@ def ProceedAccounts(startAccount):
                         time.sleep(1.5)
                     except:
                         hasFightsLeft = False
-            
+
             if fightCounter == 0:
                 print("{} can't fight anymore, go to the next Brute.".format(bruteNames[j + 1]))
             else:
@@ -154,7 +162,7 @@ def ProceedAccounts(startAccount):
                     del wins
                 except:
                     print("FIGHT COUNTER FAILED")
-            
+
         accountButton = driver.find_element(By.CLASS_NAME,"MuiFab-primary")
         action = ActionChains(driver)
         action.move_to_element(accountButton).perform()
@@ -200,7 +208,7 @@ if __name__ == "__main__":
 
         if startAcc >= 0 and startAcc < len(accountsArray):
             foundIndex = True
-    
+
     ProceedAccounts(startAcc)
 
     #thread1 = threading.Thread(target=ProceedAccounts, args=(startAcc,))
