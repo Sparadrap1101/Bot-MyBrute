@@ -30,6 +30,7 @@ def ProceedAccounts(startAccount):
         driver.get("https://brute.eternaltwin.org/")
         loginButton = driver.find_element(By.CLASS_NAME,"MuiButtonBase-root")
         loginButton.click()
+        del loginButton
 
         time.sleep(5)
 
@@ -54,12 +55,15 @@ def ProceedAccounts(startAccount):
                         findTournament = driver.find_element(By.CLASS_NAME, "css-1l4w6pd")
                         tournament = findTournament.find_element(By.TAG_NAME, "a")
                         tournament.click()
+                        del findTournament
+                        del tournament
                         
                         time.sleep(4)
 
                         try:
                             tournamentSeen = driver.find_element(By.CLASS_NAME, "css-9w9xg7")
                             tournamentSeen.click()
+                            del tournamentSeen
 
                             time.sleep(3)
                         except:
@@ -77,10 +81,12 @@ def ProceedAccounts(startAccount):
                         except:
                             tournamentRegistration = driver.find_element(By.CLASS_NAME, "css-yb6hwx")
                             tournamentRegistration.click()
+                            del tournamentRegistration
 
                             time.sleep(2)
                     else: 
                         print("Already registered in the tournament.")
+                    del nextTournament
                 except:
                     print("TOURNAMENT REGISTRATION FAILED!")
 
@@ -108,11 +114,14 @@ def ProceedAccounts(startAccount):
                             randomOpponent = random.randint(0, 5)
                             opponents = driver.find_elements(By.CLASS_NAME, "css-rpybyc")
                             opponents[randomOpponent].click()
+                            del randomOpponent
+                            del opponents
 
                             time.sleep(1)
 
                             runFight = driver.find_element(By.CLASS_NAME, "css-1e0h3j1")
                             runFight.click()
+                            del runFight
 
                             time.sleep(2.5)
 
@@ -133,20 +142,27 @@ def ProceedAccounts(startAccount):
                     fightsWonAfter = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
 
                     wins = fightsWonAfter - fightsWonBefore
+                    del fightsWonBefore
+                    del fightsWonAfter
 
                     print("{} is done. He won {}/{} fights!".format(bruteNames[j + 1], wins, fightCounter))
+                    del wins
                 except:
                     print("FIGHT COUNTER FAILED")
-
+            
         accountButton = driver.find_element(By.CLASS_NAME,"MuiFab-primary")
         action = ActionChains(driver)
         action.move_to_element(accountButton).perform()
+        del accountButton
+        del action
 
         time.sleep(1)
 
         logout = driver.find_element(By.ID,"Compte-action-0")
         logoutButton = logout.find_element(By.TAG_NAME, "button")
         logoutButton.click()
+        del logout
+        del logoutButton
 
         time.sleep(2)
 
