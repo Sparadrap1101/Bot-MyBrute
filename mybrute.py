@@ -31,14 +31,14 @@ def ProceedAccounts(startAccount):
         loginButton = driver.find_element(By.CLASS_NAME,"MuiButtonBase-root")
         loginButton.click()
 
-        time.sleep(3)
+        time.sleep(5)
 
         for j in range(3):
             print("\n{} is working...".format(bruteNames[j + 1]))
 
             driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
 
-            time.sleep(3)
+            time.sleep(4)
 
             hasFightsLeft = True
 
@@ -55,19 +55,19 @@ def ProceedAccounts(startAccount):
                         tournament = findTournament.find_element(By.TAG_NAME, "a")
                         tournament.click()
                         
-                        time.sleep(2)
+                        time.sleep(4)
 
                         try:
                             tournamentSeen = driver.find_element(By.CLASS_NAME, "css-9w9xg7")
                             tournamentSeen.click()
 
-                            time.sleep(2)
+                            time.sleep(3)
                         except:
                             print("TOURNAMENT ALREADY SEEN")
 
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
 
-                        time.sleep(2)
+                        time.sleep(3)
 
                         try:
                             driver.find_element(By.CLASS_NAME, "css-v3tyeg")
@@ -78,7 +78,7 @@ def ProceedAccounts(startAccount):
                             tournamentRegistration = driver.find_element(By.CLASS_NAME, "css-yb6hwx")
                             tournamentRegistration.click()
 
-                            time.sleep(1)
+                            time.sleep(2)
                     else: 
                         print("Already registered in the tournament.")
                 except:
@@ -151,7 +151,9 @@ def ProceedAccounts(startAccount):
         time.sleep(2)
 
     driver.quit()
+    print("\n--- DRIVER QUITTED ---")
 
+    time.sleep(4)
 
 if __name__ == "__main__":
 
