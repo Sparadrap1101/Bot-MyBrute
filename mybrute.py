@@ -69,8 +69,6 @@ def ProceedAccounts(startAccount):
                         del findTournament
                         del tournament
 
-                        #time.sleep(4)
-
                         try:
                             tournamentSeen = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-9w9xg7")))
                             tournamentSeen.click()
@@ -81,9 +79,6 @@ def ProceedAccounts(startAccount):
                             print("TOURNAMENT ALREADY SEEN")
 
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
-
-                        #time.sleep(3)
-
                         try:
                             WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
                             hasFightsLeft = False
@@ -110,17 +105,16 @@ def ProceedAccounts(startAccount):
 
             while hasFightsLeft:
                 try:
-                    driver.find_element(By.CLASS_NAME, "css-1dbhieh")
+                    WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1dbhieh")))
                     print("{} NEEDS TO LEVEL UP!".format(bruteNames[j + 1]))
                     hasFightsLeft = False
                 except:
                     try:
-                        driver.find_element(By.CLASS_NAME, "css-vbasy3")
-
+                        WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-vbasy3")))
                         try:
                             driver.get("https://brute.eternaltwin.org/{}/arena".format(bruteNames[j + 1]))
 
-                            time.sleep(1.5)
+                            time.sleep(1)
 
                             randomOpponent = random.randint(0, 5)
                             opponents = driver.find_elements(By.CLASS_NAME, "css-rpybyc")
@@ -128,23 +122,19 @@ def ProceedAccounts(startAccount):
                             del randomOpponent
                             del opponents
 
-                            time.sleep(1)
-
-                            runFight = driver.find_element(By.CLASS_NAME, "css-1e0h3j1")
+                            runFight = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1e0h3j1")))
                             runFight.click()
                             del runFight
-
-                            time.sleep(2.5)
 
                             fightCounter += 1
                         except:
                             print("FIGHT FAILED")
 
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
-
-                        time.sleep(1.5)
                     except:
                         hasFightsLeft = False
+
+            time.sleep(1.5)
 
             if fightCounter == 0:
                 print("{} can't fight anymore, go to the next Brute.".format(bruteNames[j + 1]))
