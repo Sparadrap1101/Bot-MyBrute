@@ -53,13 +53,9 @@ def ProceedAccounts(startAccount):
             print("\n{} is working...".format(bruteNames[j + 1]))
 
             driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
-
-            #time.sleep(4)
-
             hasFightsLeft = True
-
             try:
-                WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
+                WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
                 hasFightsLeft = False
 
                 print("{} WINS A TOURNAMENT! HE CAN RANK UP!".format(bruteNames[j + 1]))
@@ -73,32 +69,32 @@ def ProceedAccounts(startAccount):
                         del findTournament
                         del tournament
 
-                        time.sleep(4)
+                        #time.sleep(4)
 
                         try:
-                            tournamentSeen = driver.find_element(By.CLASS_NAME, "css-9w9xg7")
+                            tournamentSeen = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-9w9xg7")))
                             tournamentSeen.click()
                             del tournamentSeen
 
-                            time.sleep(3)
+                            time.sleep(1.5)
                         except:
                             print("TOURNAMENT ALREADY SEEN")
 
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
 
-                        time.sleep(3)
+                        #time.sleep(3)
 
                         try:
-                            driver.find_element(By.CLASS_NAME, "css-v3tyeg")
+                            WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
                             hasFightsLeft = False
 
                             print("{} WINS A TOURNAMENT! HE CAN RANK UP!".format(bruteNames[j + 1]))
                         except:
-                            tournamentRegistration = driver.find_element(By.CLASS_NAME, "css-yb6hwx")
+                            tournamentRegistration = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-yb6hwx")))
                             tournamentRegistration.click()
                             del tournamentRegistration
 
-                            time.sleep(2)
+                            time.sleep(1)
                     else: 
                         print("Already registered in the tournament.")
                     del nextTournament
