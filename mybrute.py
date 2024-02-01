@@ -39,34 +39,36 @@ def ProceedAccounts(startAccount):
             del button
         except:
             print("LOGIN ACCOUNT FAILED")
+        
+        time.sleep(1)
 
         driver.get("https://brute.eternaltwin.org/")
         loginButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"MuiButtonBase-root")))
         loginButton.click()
         del loginButton
 
-        time.sleep(5)
+        time.sleep(3)
 
         for j in range(3):
             print("\n{} is working...".format(bruteNames[j + 1]))
 
             driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
 
-            time.sleep(4)
+            #time.sleep(4)
 
             hasFightsLeft = True
 
             try:
-                driver.find_element(By.CLASS_NAME, "css-v3tyeg")
+                WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
                 hasFightsLeft = False
 
                 print("{} WINS A TOURNAMENT! HE CAN RANK UP!".format(bruteNames[j + 1]))
             except:
                 try:
-                    nextTournament = driver.find_element(By.CLASS_NAME, "css-1rb3pee")
+                    nextTournament = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rb3pee")))
                     if not nextTournament.text == "Brute inscrite.":
-                        findTournament = driver.find_element(By.CLASS_NAME, "css-1l4w6pd")
-                        tournament = findTournament.find_element(By.TAG_NAME, "a")
+                        findTournament = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1l4w6pd")))
+                        tournament = WebDriverWait(findTournament, 10).until(EC.presence_of_element_located((By.TAG_NAME, "a")))
                         tournament.click()
                         del findTournament
                         del tournament
