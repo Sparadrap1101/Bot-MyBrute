@@ -151,7 +151,7 @@ def ProceedAccounts(startAccount):
                 except:
                     print("FIGHT COUNTER FAILED")
 
-        accountButton = driver.find_element(By.CLASS_NAME,"MuiFab-primary")
+        accountButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"MuiFab-primary")))
         action = ActionChains(driver)
         action.move_to_element(accountButton).perform()
         del accountButton
@@ -159,13 +159,11 @@ def ProceedAccounts(startAccount):
 
         time.sleep(1)
 
-        logout = driver.find_element(By.ID,"Compte-action-0")
-        logoutButton = logout.find_element(By.TAG_NAME, "button")
+        logout = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID,"Compte-action-0")))
+        logoutButton = WebDriverWait(logout, 10).until(EC.presence_of_element_located((By.TAG_NAME, "button")))
         logoutButton.click()
         del logout
         del logoutButton
-
-        time.sleep(2)
 
     driver.quit()
     print("\n--- DRIVER QUITTED ---")
