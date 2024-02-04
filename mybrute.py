@@ -114,7 +114,7 @@ def ProceedAccounts(startAccount):
                         try:
                             driver.get("https://brute.eternaltwin.org/{}/arena".format(bruteNames[j + 1]))
 
-                            time.sleep(1)
+                            time.sleep(1.5)
 
                             randomOpponent = random.randint(0, 5)
                             opponents = driver.find_elements(By.CLASS_NAME, "css-rpybyc")
@@ -133,8 +133,6 @@ def ProceedAccounts(startAccount):
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
                     except:
                         hasFightsLeft = False
-
-            time.sleep(1.5)
 
             if fightCounter == 0:
                 print("{} can't fight anymore, go to the next Brute.".format(bruteNames[j + 1]))
@@ -167,8 +165,6 @@ def ProceedAccounts(startAccount):
 
     driver.quit()
     print("\n--- DRIVER QUITTED ---")
-
-    time.sleep(4)
 
 if __name__ == "__main__":
 
@@ -211,7 +207,7 @@ if __name__ == "__main__":
     #print("Closed {}".format(thread3))
     #print("Closed {}".format(thread4))
 
-    time.sleep(2)
+    time.sleep(1)
 
     #thread1.join()
     #thread2.join()
