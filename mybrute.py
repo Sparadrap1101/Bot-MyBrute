@@ -1,7 +1,6 @@
 import os
 import time
 import random
-import threading
 from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -193,27 +192,7 @@ if __name__ == "__main__":
 
     ProceedAccounts(startAcc)
 
-    #thread1 = threading.Thread(target=ProceedAccounts, args=(startAcc,))
-    #thread2 = threading.Thread(target=ProceedAccounts, args=(1,))
-    #thread3 = threading.Thread(target=ProceedAccounts, args=(2,))
-    #thread4 = threading.Thread(target=ProceedAccounts, args=(3,))
-
-    #thread1.start()
-    #thread2.start()
-    #thread3.start()
-    #thread4.start()
-    #print("Closed {}".format(thread1))
-    #print("Closed {}".format(thread2))
-    #print("Closed {}".format(thread3))
-    #print("Closed {}".format(thread4))
-
     time.sleep(1)
-
-    #thread1.join()
-    #thread2.join()
-    #thread3.join()
-    #thread4.join()
-    #print("Closed {}".format(thread1))
 
     executionTime = time.time() - startTime
     print("\n--- All accounts has been processed in {} seconds. ---".format(round(executionTime, 2)))
