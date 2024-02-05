@@ -9,17 +9,20 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
-def ProceedAccounts(startAccount):
+def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
+    PASSWORD = os.getenv('PASSWORD')
     options = Options()
     prefs = {"profile.managed_default_content_settings.images": 2}
     options.add_experimental_option("prefs", prefs)
     options.add_argument("--disable-javascript")
 
     driver = webdriver.Chrome(options=options)
-    driver.set_window_position(0, 0)
-    driver.set_window_size(1040, 850)
+    driver.set_window_position(sizeArray[0], sizeArray[1])
+    driver.set_window_size(sizeArray[2], sizeArray[3])
 
-    for i in range(len(accountsArray) - startAccount):
+    quitDriver = 0
+    for i in range(nbreOfAccounts):
+        quitDriver += 1
         bruteNames = accountsArray[i + startAccount].split(" ")
         print("\nAccount {}: Brute names = {}".format(i + startAccount, bruteNames))
 
