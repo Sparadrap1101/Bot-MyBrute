@@ -2,6 +2,7 @@ import os
 import gc
 import time
 import random
+import multiprocessing
 from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -216,8 +217,11 @@ if __name__ == "__main__":
         if startAcc >= 0 and startAcc < len(accountsArray):
             foundIndex = True
 
-    ProceedAccounts(startAcc)
-
+    multiprocess = input("Do you want to multiprocess the script ? (y/n) > ")
+    if multiprocess == "y":
+    else:
+        ProceedAccounts(startAcc, len(accountsArray) - startAcc, accountsArray, [0, 0, 850, 850])
+    
     time.sleep(1)
 
     executionTime = time.time() - startTime
