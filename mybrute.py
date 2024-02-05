@@ -219,6 +219,38 @@ if __name__ == "__main__":
 
     multiprocess = input("Do you want to multiprocess the script ? (y/n) > ")
     if multiprocess == "y":
+        nbreAccounts = len(accountsArray) - startAcc
+        nbrePerProcess = int(nbreAccounts / 4)
+
+        startAcc1 = startAcc
+        sizeArray1 = [0, 0, 720, 400]
+        process1 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc1, nbrePerProcess, accountsArray, sizeArray1))
+        print("Process1: from account n°{} to account n°{}!".format(startAcc1, startAcc1 + nbrePerProcess))
+
+        startAcc2 = startAcc + nbrePerProcess
+        sizeArray2 = [720, 0, 720, 400]
+        process2 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc2, nbrePerProcess, accountsArray, sizeArray2))
+        print("Process2: from account n°{} to account n°{}!".format(startAcc2, startAcc2 + nbrePerProcess))
+
+        startAcc3 = startAcc + nbrePerProcess * 2
+        sizeArray3 = [0, 425, 720, 400]
+        process3 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc3, nbrePerProcess, accountsArray, sizeArray3))
+        print("Process3: from account n°{} to account n°{}!".format(startAcc3, startAcc3 + nbrePerProcess))
+
+        startAcc4 = startAcc + nbrePerProcess * 3
+        sizeArray4 = [720, 425, 720, 400]
+        process4 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc4, len(accountsArray) - startAcc4, accountsArray, sizeArray4))
+        print("Process4: from account n°{} to account n°{}!".format(startAcc4, startAcc4 + len(accountsArray) - startAcc4))
+
+        process1.start()
+        process2.start()
+        process3.start()
+        process4.start()
+
+        process1.join()
+        process2.join()
+        process3.join()
+        process4.join()
     else:
         ProceedAccounts(startAcc, len(accountsArray) - startAcc, accountsArray, [0, 0, 850, 850])
     
