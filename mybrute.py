@@ -37,7 +37,7 @@ def ProceedAccounts(startAccount):
             del password
             del button
         except:
-            print("LOGIN ACCOUNT FAILED")
+            print("Account {}: LOGIN ACCOUNT FAILED".format(i + startAccount))
         
         time.sleep(1)
 
@@ -46,10 +46,10 @@ def ProceedAccounts(startAccount):
         loginButton.click()
         del loginButton
 
-        time.sleep(3)
+        time.sleep(5)
 
         for j in range(3):
-            print("\n{} is working...".format(bruteNames[j + 1]))
+            print("\nAccount {}: {} - Work in progress...".format(i + startAccount, bruteNames[j + 1]))
 
             driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
             hasFightsLeft = True
@@ -57,7 +57,7 @@ def ProceedAccounts(startAccount):
                 WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
                 hasFightsLeft = False
 
-                print("{} WINS A TOURNAMENT! HE CAN RANK UP!".format(bruteNames[j + 1]))
+                print("Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]))
             except:
                 try:
                     nextTournament = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rb3pee")))
@@ -69,20 +69,20 @@ def ProceedAccounts(startAccount):
                         del tournament
 
                         try:
-                            tournamentSeen = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-9w9xg7")))
+                            tournamentSeen = WebDriverWait(driver, 4).until(EC.presence_of_element_located((By.CLASS_NAME,"css-9w9xg7")))
                             tournamentSeen.click()
                             del tournamentSeen
 
                             time.sleep(1.5)
                         except:
-                            print("TOURNAMENT ALREADY SEEN")
+                            print("Account {}: {} - TOURNAMENT ALREADY SEEN".format(i + startAccount, bruteNames[j + 1]))
 
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
                         try:
                             WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
                             hasFightsLeft = False
 
-                            print("{} WINS A TOURNAMENT! HE CAN RANK UP!".format(bruteNames[j + 1]))
+                            print("Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]))
                         except:
                             tournamentRegistration = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-yb6hwx")))
                             tournamentRegistration.click()
@@ -90,51 +90,53 @@ def ProceedAccounts(startAccount):
 
                             time.sleep(1)
                     else: 
-                        print("Already registered in the tournament.")
+                        print("Account {}: {} - Already registered in the tournament.".format(i + startAccount, bruteNames[j + 1]))
                     del nextTournament
                 except:
-                    print("TOURNAMENT REGISTRATION FAILED!")
+                    print("Account {}: {} - TOURNAMENT REGISTRATION FAILED!".format(i + startAccount, bruteNames[j + 1]))
 
             fightCounter = 0
             try:
                 fightsWonBefore = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
             except:
                 fightsWonBefore = 0
-                print("FIGHT COUNTER FAILED")
+                print("Account {}: {} - FIGHT COUNTER FAILED".format(i + startAccount, bruteNames[j + 1]))
 
             while hasFightsLeft:
                 try:
-                    WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1dbhieh")))
-                    print("{} NEEDS TO LEVEL UP!".format(bruteNames[j + 1]))
+                    WebDriverWait(driver, 1.5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1dbhieh")))
+                    print("Account {}: {} - NEEDS TO LEVEL UP!".format(i + startAccount, bruteNames[j + 1]))
                     hasFightsLeft = False
                 except:
                     try:
-                        WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-vbasy3")))
+                        WebDriverWait(driver, 1.5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-vbasy3")))
                         try:
                             driver.get("https://brute.eternaltwin.org/{}/arena".format(bruteNames[j + 1]))
 
-                            time.sleep(1.5)
+                            time.sleep(2)
 
                             randomOpponent = random.randint(0, 5)
                             opponents = driver.find_elements(By.CLASS_NAME, "css-rpybyc")
                             opponents[randomOpponent].click()
                             del randomOpponent
                             del opponents
+                            
+                            time.sleep(1.5)
 
-                            runFight = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1e0h3j1")))
+                            runFight = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-3iozau")))
                             runFight.click()
                             del runFight
 
                             fightCounter += 1
                         except:
-                            print("FIGHT FAILED")
+                            print("Account {}: {} - FIGHT FAILED".format(i + startAccount, bruteNames[j + 1]))
 
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
                     except:
                         hasFightsLeft = False
 
             if fightCounter == 0:
-                print("{} can't fight anymore, go to the next Brute.".format(bruteNames[j + 1]))
+                print("Account {}: {} - Can't fight anymore, go to the next Brute.".format(i + startAccount, bruteNames[j + 1]))
             else:
                 try:
                     fightsWonAfter = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
@@ -143,12 +145,14 @@ def ProceedAccounts(startAccount):
                     del fightsWonBefore
                     del fightsWonAfter
 
-                    print("{} is done. He won {}/{} fights!".format(bruteNames[j + 1], wins, fightCounter))
+                    print("Account {}: {} - Done. He won {}/{} fights!".format(i + startAccount, bruteNames[j + 1], wins, fightCounter))
                     del wins
                 except:
-                    print("FIGHT COUNTER FAILED")
+                    print("Account {}: {} - FIGHT COUNTER FAILED".format(i + startAccount, bruteNames[j + 1]))
 
-        accountButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"MuiFab-primary")))
+        time.sleep(1)
+
+        accountButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
         action = ActionChains(driver)
         action.move_to_element(accountButton).perform()
         del accountButton
@@ -170,7 +174,6 @@ if __name__ == "__main__":
     startTime = time.time()
 
     load_dotenv()
-    PASSWORD = os.getenv('PASSWORD')
     BASIC_ACCOUNTS = os.getenv('BASIC_ACCOUNTS')
     BEST_ACCOUNTS = os.getenv('BEST_ACCOUNTS')
 
@@ -201,8 +204,5 @@ if __name__ == "__main__":
 # Next steps:
 ## Donner le nbre de win sur les tournois et contre quel lvl j'ai perdu ?
 ## Gérer les combats contre le boss de clan sur certains compte (autre script ? Qqc de spécial dans le 'accounts' ?)
-## Essayer d'optimiser/réduire le temps en restant safe sur les délais de chargement
-## Faire du Threading pour essayer de lancer l'exécution de plusieurs compte en même temps
 ## Faire un mode à activer ou non pour passer automatiquement les levels
-## Régler problème de déconnexion qui bug quand tu fais autre chose en même temps
 ## Gérer le cas où y'a 4+ brutes sur un compte
