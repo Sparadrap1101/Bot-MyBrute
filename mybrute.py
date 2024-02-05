@@ -1,4 +1,5 @@
 import os
+import gc
 import time
 import random
 from dotenv import load_dotenv
@@ -169,8 +170,27 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         del logout
         del logoutButton
 
+        gc.collect()
+
+        if quitDriver == 3:
+            driver.quit()
+            print("\n--- DRIVER QUITTED ---")
+
+            time.sleep(2)
+
+            options = Options()
+            prefs = {"profile.managed_default_content_settings.images": 2}
+            options.add_experimental_option("prefs", prefs)
+            options.add_argument("--disable-javascript")
+
+            driver = webdriver.Chrome(options=options)
+            driver.set_window_position(sizeArray[0], sizeArray[1])
+            driver.set_window_size(sizeArray[2], sizeArray[3])
+
+            quitDriver = 0
+
     driver.quit()
-    print("\n--- DRIVER QUITTED ---")
+    print("\n--- END OF THE PROCESS ---")
 
 if __name__ == "__main__":
 
