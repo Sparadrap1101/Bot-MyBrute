@@ -19,6 +19,15 @@ foundAccount = False
 while foundAccount == False:
     accountName = input("Please enter the account name you want > ")
 
+    driver.get("https://eternaltwin.org/login")
+    loginForm = driver.find_element(By.CLASS_NAME,"ng-pristine")
+    username = loginForm.find_element(By.NAME, "login")
+    username.send_keys(accountName)
+    password = loginForm.find_element(By.NAME, "password")
+    password.send_keys(PASSWORD)
+    button = loginForm.find_element(By.NAME, "sign_in")
+    button.click()
+
 driver.quit()
 
 executionTime = time.time() - startTime
