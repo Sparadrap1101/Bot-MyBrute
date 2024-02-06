@@ -13,6 +13,12 @@ driver = webdriver.Chrome()
 driver.set_window_position(0, 0)
 driver.set_window_size(1000, 850)
 
+bruteNames = ["", "", "", "", "", ""]
+
+foundAccount = False
+while foundAccount == False:
+    accountName = input("Please enter the account name you want > ")
+
 driver.quit()
 
 executionTime = time.time() - startTime
