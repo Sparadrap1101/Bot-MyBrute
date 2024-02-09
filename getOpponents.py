@@ -28,6 +28,14 @@ while foundAccount == False:
     button = loginForm.find_element(By.NAME, "sign_in")
     button.click()
 
+    time.sleep(2)
+
+    verify = driver.find_element(By.CLASS_NAME, "button").text
+
+    driver.get("https://brute.eternaltwin.org/")
+    loginButton = driver.find_element(By.CLASS_NAME,"MuiButtonBase-root")
+    loginButton.click()
+
 driver.quit()
 
 executionTime = time.time() - startTime
