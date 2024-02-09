@@ -53,7 +53,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
         time.sleep(5)
 
-        for j in range(3):
+        for j in range(len(bruteNames) - 1):
             print("\nAccount {}: {} - Work in progress...".format(i + startAccount, bruteNames[j + 1]))
 
             driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
@@ -263,5 +263,4 @@ if __name__ == "__main__":
 # Next steps:
 ## Donner le nbre de win sur les tournois et contre quel lvl j'ai perdu ?
 ## Gérer les combats contre le boss de clan sur certains compte (autre script ? Qqc de spécial dans le 'accounts' ?)
-## Faire un mode à activer ou non pour passer automatiquement les levels
-## Gérer le cas où y'a 4+ brutes sur un compte
+## Optimiser les prints avec le multiprocess
