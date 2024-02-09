@@ -45,7 +45,10 @@ bruteName = input("Please enter the Brute name you want > ")
 
 continueGetOpponents = True
 while continueGetOpponents == True:
-    
+    try:
+        driver.get("https://brute.eternaltwin.org/{}/arena".format(bruteName))
+
+        time.sleep(1)
 driver.quit()
 
 executionTime = time.time() - startTime
