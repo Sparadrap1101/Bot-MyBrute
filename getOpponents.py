@@ -36,6 +36,11 @@ while foundAccount == False:
     loginButton = driver.find_element(By.CLASS_NAME,"MuiButtonBase-root")
     loginButton.click()
 
+    if verify == accountName:
+        foundAccount = True
+    else:
+        print("Wrong name account, please try again.")
+
 driver.quit()
 
 executionTime = time.time() - startTime
