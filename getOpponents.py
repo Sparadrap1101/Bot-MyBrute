@@ -41,6 +41,11 @@ while foundAccount == False:
     else:
         print("Wrong name account, please try again.")
 
+bruteName = input("Please enter the Brute name you want > ")
+
+continueGetOpponents = True
+while continueGetOpponents == True:
+    
 driver.quit()
 
 executionTime = time.time() - startTime
