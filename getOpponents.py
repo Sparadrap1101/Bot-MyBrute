@@ -11,7 +11,7 @@ PASSWORD = os.getenv('PASSWORD')
 
 driver = webdriver.Chrome()
 driver.set_window_position(0, 0)
-driver.set_window_size(1000, 850)
+driver.set_window_size(1000, 800)
 
 bruteNames = ["", "", "", "", "", ""]
 
@@ -48,7 +48,13 @@ while continueGetOpponents == True:
     try:
         driver.get("https://brute.eternaltwin.org/{}/arena".format(bruteName))
 
-        time.sleep(1)
+        time.sleep(1.5)
+
+        opponents = driver.find_elements(By.CLASS_NAME, "css-rpybyc")
+
+        for i in range(6):
+            bruteNames[i] = opponents[i].find_element(By.TAG_NAME, "p").text
+
 driver.quit()
 
 executionTime = time.time() - startTime
