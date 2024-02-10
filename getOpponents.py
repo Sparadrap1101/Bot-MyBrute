@@ -55,6 +55,9 @@ while continueGetOpponents == True:
         for i in range(6):
             bruteNames[i] = opponents[i].find_element(By.TAG_NAME, "p").text
 
+        driver.execute_script("window.open('');")
+        driver.switch_to.window(driver.window_handles[1])
+        
 driver.quit()
 
 executionTime = time.time() - startTime
