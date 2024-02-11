@@ -59,6 +59,10 @@ while continueGetOpponents == True:
         driver.execute_script("window.open('');")
         driver.switch_to.window(driver.window_handles[1])
 
+        for i in range(6):
+            driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[i]))
+            time.sleep(1)
+
 driver.quit()
 
 executionTime = time.time() - startTime
