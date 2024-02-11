@@ -68,6 +68,11 @@ while continueGetOpponents == True:
         driver.switch_to.window(driver.window_handles[1])
         driver.close()
         driver.switch_to.window(driver.window_handles[0])
+
+        wantToContinue = input("\nDo you want to get your opponents for the next fight ? (y/n) > ")
+
+        if wantToContinue == "n":
+            continueGetOpponents = False
 driver.quit()
 
 executionTime = time.time() - startTime
