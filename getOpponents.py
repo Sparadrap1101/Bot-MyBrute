@@ -63,6 +63,11 @@ while continueGetOpponents == True:
             driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[i]))
             time.sleep(1)
 
+        input("\nPress enter to continue.")
+
+        driver.switch_to.window(driver.window_handles[1])
+        driver.close()
+        driver.switch_to.window(driver.window_handles[0])
 driver.quit()
 
 executionTime = time.time() - startTime
