@@ -73,6 +73,11 @@ while continueGetOpponents == True:
 
         if wantToContinue == "n":
             continueGetOpponents = False
+    except:
+        print("Wrong Brute name or no fight left, please try again.")
+
+        bruteName = input("Please enter the Brute name you want > ")
+
 driver.quit()
 
 executionTime = time.time() - startTime
