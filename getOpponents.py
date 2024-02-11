@@ -20,6 +20,7 @@ while foundAccount == False:
     accountName = input("Please enter the account name you want > ")
 
     driver.get("https://eternaltwin.org/login")
+    time.sleep(1)
     loginForm = driver.find_element(By.CLASS_NAME,"ng-pristine")
     username = loginForm.find_element(By.NAME, "login")
     username.send_keys(accountName)
@@ -57,7 +58,7 @@ while continueGetOpponents == True:
 
         driver.execute_script("window.open('');")
         driver.switch_to.window(driver.window_handles[1])
-        
+
 driver.quit()
 
 executionTime = time.time() - startTime
