@@ -10,3 +10,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
 if __name__ == "__main__":
+
+    startTime = time.time()
+
+    executionTime = time.time() - startTime
+    print("\n--- All accounts has been processed in {} seconds. ---".format(round(executionTime, 2)))
