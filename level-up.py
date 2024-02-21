@@ -17,5 +17,8 @@ if __name__ == "__main__":
     BASIC_ACCOUNTS = os.getenv('BASIC_ACCOUNTS')
     BEST_ACCOUNTS = os.getenv('BEST_ACCOUNTS')
 
+    basicAccountsArray = BASIC_ACCOUNTS.split(", ")
+    bestAccountsArray = BEST_ACCOUNTS.split(", ")
+
     executionTime = time.time() - startTime
     print("\n--- All accounts has been processed in {} seconds. ---".format(round(executionTime, 2)))
