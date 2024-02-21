@@ -20,5 +20,11 @@ if __name__ == "__main__":
     basicAccountsArray = BASIC_ACCOUNTS.split(", ")
     bestAccountsArray = BEST_ACCOUNTS.split(", ")
 
+    makeBests = input("Do you want to level up your best brutes ? (y/n) > ")
+    if makeBests == "y":
+        accountsArray = basicAccountsArray + bestAccountsArray
+    else:
+        accountsArray = basicAccountsArray
+
     executionTime = time.time() - startTime
     print("\n--- All accounts has been processed in {} seconds. ---".format(round(executionTime, 2)))
