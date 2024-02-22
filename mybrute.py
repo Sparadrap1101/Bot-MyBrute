@@ -52,6 +52,8 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         loginButton.click()
         del loginButton
 
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
+
         time.sleep(5)
 
         for j in range(len(bruteNames) - 1):
