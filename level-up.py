@@ -9,6 +9,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
+def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
+    
 if __name__ == "__main__":
 
     startTime = time.time()
