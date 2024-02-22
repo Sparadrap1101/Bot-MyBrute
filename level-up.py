@@ -26,5 +26,12 @@ if __name__ == "__main__":
     else:
         accountsArray = basicAccountsArray
 
+    foundIndex = False
+    while foundIndex == False:
+        startAcc = int(input("Please enter the index of the account you want to start by (e.g. 0) > "))
+
+        if startAcc >= 0 and startAcc < len(accountsArray):
+            foundIndex = True
+
     executionTime = time.time() - startTime
     print("\n--- All accounts has been processed in {} seconds. ---".format(round(executionTime, 2)))
