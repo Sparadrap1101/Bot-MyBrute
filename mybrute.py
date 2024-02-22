@@ -271,7 +271,6 @@ if __name__ == "__main__":
 # Next steps:
 ## Donner le nbre de win sur les tournois et contre quel lvl j'ai perdu ?
 ## Gérer les combats contre le boss de clan sur certains compte (autre script ? Qqc de spécial dans le 'accounts' ?)
-## Optimiser les prints avec le multiprocess
 
 # class color:
 #    PURPLE = '\033[95m'
