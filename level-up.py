@@ -33,5 +33,9 @@ if __name__ == "__main__":
         if startAcc >= 0 and startAcc < len(accountsArray):
             foundIndex = True
 
+    ProceedAccounts()
+    
+    time.sleep(1)
+
     executionTime = time.time() - startTime
     print("\n--- All accounts has been processed in {} seconds. ---".format(round(executionTime, 2)))
