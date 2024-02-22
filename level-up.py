@@ -33,7 +33,7 @@ if __name__ == "__main__":
         if startAcc >= 0 and startAcc < len(accountsArray):
             foundIndex = True
 
-    ProceedAccounts()
+    ProceedAccounts(startAcc, len(accountsArray) - startAcc, accountsArray, [0, 0, 850, 850])
     
     time.sleep(1)
 
