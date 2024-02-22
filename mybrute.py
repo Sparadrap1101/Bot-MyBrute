@@ -54,7 +54,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
 
-        time.sleep(5)
+        time.sleep(1)
 
         for j in range(len(bruteNames) - 1):
             print("\nAccount {}: {} - Work in progress...".format(i + startAccount, bruteNames[j + 1]))
@@ -62,7 +62,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
             hasFightsLeft = True
             try:
-                WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
+                WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
                 hasFightsLeft = False
 
                 print("Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]))
@@ -81,13 +81,13 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             tournamentSeen.click()
                             del tournamentSeen
 
-                            time.sleep(1.5)
+                            time.sleep(2)
                         except:
                             print("Account {}: {} - TOURNAMENT ALREADY SEEN".format(i + startAccount, bruteNames[j + 1]))
 
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
                         try:
-                            WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
+                            WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
                             hasFightsLeft = False
 
                             print("Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]))
@@ -96,7 +96,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             tournamentRegistration.click()
                             del tournamentRegistration
 
-                            time.sleep(1.5)
+                            time.sleep(2)
                     else: 
                         print("Account {}: {} - Already registered in the tournament.".format(i + startAccount, bruteNames[j + 1]))
                     del nextTournament
@@ -112,7 +112,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
             while hasFightsLeft:
                 try:
-                    WebDriverWait(driver, 1.5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1dbhieh")))
+                    WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1dbhieh")))
                     print("Account {}: {} - NEEDS TO LEVEL UP!".format(i + startAccount, bruteNames[j + 1]))
                     hasFightsLeft = False
                 except:
@@ -129,7 +129,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             del randomOpponent
                             del opponents
                             
-                            time.sleep(1.5)
+                            time.sleep(2)
 
                             runFight = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-3iozau")))
                             runFight.click()
