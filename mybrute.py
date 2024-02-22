@@ -94,7 +94,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             tournamentRegistration.click()
                             del tournamentRegistration
 
-                            time.sleep(1)
+                            time.sleep(1.5)
                     else: 
                         print("Account {}: {} - Already registered in the tournament.".format(i + startAccount, bruteNames[j + 1]))
                     del nextTournament
@@ -115,11 +115,11 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                     hasFightsLeft = False
                 except:
                     try:
-                        WebDriverWait(driver, 1.5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-vbasy3")))
+                        WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-vbasy3")))
                         try:
                             driver.get("https://brute.eternaltwin.org/{}/arena".format(bruteNames[j + 1]))
 
-                            time.sleep(2)
+                            time.sleep(1)
 
                             randomOpponent = random.randint(0, 5)
                             opponents = driver.find_elements(By.CLASS_NAME, "css-rpybyc")
