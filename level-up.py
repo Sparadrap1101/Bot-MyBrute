@@ -11,6 +11,11 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
     PASSWORD = os.getenv('PASSWORD')
+    options = Options()
+    # prefs = {"profile.managed_default_content_settings.images": 2}
+    # options.add_experimental_option("prefs", prefs)
+    options.add_argument("--disable-javascript")
+
 if __name__ == "__main__":
 
     startTime = time.time()
