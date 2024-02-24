@@ -20,6 +20,9 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
     driver.set_window_position(sizeArray[0], sizeArray[1])
     driver.set_window_size(sizeArray[2], sizeArray[3])
 
+    driver.quit()
+    print("\n--- END OF THE PROCESS ---")
+
 if __name__ == "__main__":
 
     startTime = time.time()
