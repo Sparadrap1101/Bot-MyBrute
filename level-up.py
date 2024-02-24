@@ -16,6 +16,10 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
     # options.add_experimental_option("prefs", prefs)
     options.add_argument("--disable-javascript")
 
+    driver = webdriver.Chrome(options=options)
+    driver.set_window_position(sizeArray[0], sizeArray[1])
+    driver.set_window_size(sizeArray[2], sizeArray[3])
+
 if __name__ == "__main__":
 
     startTime = time.time()
