@@ -25,6 +25,9 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         print("\nAccount {}: Brute names = {}".format(i + startAccount, bruteNames))
         print("\n----------")
 
+        try:
+            driver.get("https://eternaltwin.org/login")
+            time.sleep(1)
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
 
