@@ -28,6 +28,10 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         try:
             driver.get("https://eternaltwin.org/login")
             time.sleep(1)
+            loginForm = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"ng-pristine")))
+            username = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "login")))
+            username.send_keys(bruteNames[0])
+            
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
 
