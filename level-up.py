@@ -21,6 +21,10 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
     driver.set_window_size(sizeArray[2], sizeArray[3])
 
     for i in range(nbreOfAccounts):
+        bruteNames = accountsArray[i + startAccount].split(" ")
+        print("\nAccount {}: Brute names = {}".format(i + startAccount, bruteNames))
+        print("\n----------")
+
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
 
