@@ -33,6 +33,8 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             username.send_keys(bruteNames[0])
             password = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "password")))
             password.send_keys(PASSWORD)
+            button = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "sign_in")))
+            button.click()
         
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
