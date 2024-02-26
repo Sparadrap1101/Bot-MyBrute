@@ -42,6 +42,10 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         except:
             print("Account {}: LOGIN ACCOUNT FAILED".format(i + startAccount))
         
+        time.sleep(1)
+
+        driver.get("https://brute.eternaltwin.org/")
+        
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
 
