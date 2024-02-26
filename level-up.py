@@ -39,6 +39,8 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             del username
             del password
             del button
+        except:
+            print("Account {}: LOGIN ACCOUNT FAILED".format(i + startAccount))
         
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
