@@ -31,7 +31,9 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             loginForm = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"ng-pristine")))
             username = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "login")))
             username.send_keys(bruteNames[0])
-            
+            password = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "password")))
+            password.send_keys(PASSWORD)
+        
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
 
