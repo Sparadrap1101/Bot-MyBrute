@@ -35,6 +35,10 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             password.send_keys(PASSWORD)
             button = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "sign_in")))
             button.click()
+            del loginForm
+            del username
+            del password
+            del button
         
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
