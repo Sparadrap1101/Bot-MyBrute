@@ -45,7 +45,10 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         time.sleep(1)
 
         driver.get("https://brute.eternaltwin.org/")
-        
+        loginButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"MuiButtonBase-root")))
+        loginButton.click()
+        del loginButton
+
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
 
