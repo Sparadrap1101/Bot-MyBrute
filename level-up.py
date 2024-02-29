@@ -49,6 +49,8 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         loginButton.click()
         del loginButton
 
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
+
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
 
