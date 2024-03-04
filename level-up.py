@@ -52,6 +52,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
 
         for j in range(len(bruteNames) - 1):
+            driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
 
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
