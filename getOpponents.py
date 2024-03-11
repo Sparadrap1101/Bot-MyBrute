@@ -3,6 +3,8 @@ import time
 from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 startTime = time.time()
 
@@ -50,6 +52,8 @@ while continueGetOpponents == True:
         driver.get("https://brute.eternaltwin.org/{}/arena".format(bruteName))
 
         time.sleep(1.5)
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-xxeckd")))
+        time.sleep(1.5)
 
         opponents = driver.find_elements(By.CLASS_NAME, "css-rpybyc")
 
@@ -61,7 +65,8 @@ while continueGetOpponents == True:
 
         for i in range(6):
             driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[i]))
-            time.sleep(1)
+            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
+            time.sleep(0.5)
 
         input("\nPress enter to continue.")
 
