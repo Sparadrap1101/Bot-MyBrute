@@ -113,6 +113,54 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                 except:
                     print("\n{} don't need to level up.".format(bruteNames[j + 1]))
 
+            while waitChoice:
+                userChoice = input("\nWhich skill do you want for this new level ? (0: Left, 1: Right, exit: Next Brute) > ")
+                if userChoice == "0":
+                    print("\033[1m" + "\n- You chose {}!".format(choice1) + "\033[0m")
+                    driver.get("https://brute.eternaltwin.org/{}/level-up".format(bruteNames[j + 1]))
+
+                    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1wi9ne9")))
+                    choices = driver.find_elements(By.CLASS_NAME, "css-1wi9ne9")
+                    choices[0].click()
+                    waitChoice = False
+
+                    time.sleep(1)
+
+                elif userChoice == "1":
+                    print("\033[1m" + "\n- You chose {}!".format(choice2) + "\033[0m")
+                    driver.get("https://brute.eternaltwin.org/{}/level-up".format(bruteNames[j + 1]))
+
+                    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1wi9ne9")))
+                    choices = driver.find_elements(By.CLASS_NAME, "css-1wi9ne9")
+                    choices[1].click()
+                    waitChoice = False
+
+                    time.sleep(1)
+
+                elif userChoice == "exit":
+                    print("Exiting, go to the next brute...")
+                    waitChoice = False
+                else:
+                    print("Wrong answer, please try again.")
+
+            print("\n----------")
+
+        time.sleep(1)
+
+        accountButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
+        action = ActionChains(driver)
+        action.move_to_element(accountButton).perform()
+        del accountButton
+        del action
+
+        time.sleep(1)
+
+        logout = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID,"Compte-action-0")))
+        logoutButton = WebDriverWait(logout, 10).until(EC.presence_of_element_located((By.TAG_NAME, "button")))
+        logoutButton.click()
+        del logout
+        del logoutButton
+
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
 
