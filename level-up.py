@@ -54,6 +54,19 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         for j in range(len(bruteNames) - 1):
             driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
 
+            waitChoice = False
+            try:
+                time.sleep(1)
+                
+                levelUp = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1dbhieh")))
+                levelUp.click()
+                del levelUp
+                print("\n{} NEEDS TO LEVEL UP:".format(bruteNames[j + 1]))
+
+                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1wi9ne9")))
+                choices = driver.find_elements(By.CLASS_NAME, "css-12z2g5x")
+                lastChoice = 0
+                
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
 
