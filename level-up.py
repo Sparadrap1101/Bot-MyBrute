@@ -66,7 +66,53 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1wi9ne9")))
                 choices = driver.find_elements(By.CLASS_NAME, "css-12z2g5x")
                 lastChoice = 0
-                
+                try:
+                    choice1 = choices[0].text
+                    choice2 = choices[1].text
+                except:
+                    parentDiv = driver.find_elements(By.CLASS_NAME, "css-foqdw6")
+                    try:
+                        oldChoices = parentDiv[0].find_elements(By.CLASS_NAME, "css-ewpxee")
+                        choice1 = oldChoices[0].text
+                        choice2 = choices[0].text
+                        lastChoice = 1
+                    except:
+                        oldChoices = parentDiv[1].find_elements(By.CLASS_NAME, "css-ewpxee")
+                        choice2 = oldChoices[0].text
+                        choice1 = choices[0].text
+                        lastChoice = 2
+
+                choice2 = choice2.replace('en\n', '')
+                if choice1[:13] == "Nouvelle arme":
+                    arrayChoice = choice1.split('\n')
+                    choice1 = arrayChoice[1]
+                elif choice1[:19] == "Nouvelle compétence":
+                    arrayChoice = choice1.split('\n')
+                    choice1 = arrayChoice[1]
+                elif choice1[:16] == "Nouveau familier":
+                    arrayChoice = choice1.split('\n')
+                    choice1 = arrayChoice[1]
+                elif choice1[0] == "+":
+                    choice1 = choice1.replace('en\n', '')
+
+                print("--> 0: {}\n--> 1: {}".format(choice1, choice2))
+                if lastChoice == 1:
+                    print("\033[4m" + "\nLast destiny choice:" + "\033[0m" + " {}".format(choice1))
+                elif lastChoice == 2:
+                    print("\033[4m" + "\nLast destiny choice:" + "\033[0m" + " {}".format(choice2))
+
+                driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
+                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-xi606m")))
+                driver.execute_script("window.scrollTo(0, 250)")
+                waitChoice = True
+            except:
+                try:
+                    WebDriverWait(driver, 1).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
+                    print("\nAccount {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]))
+                    print("\n{} don't need to level up.".format(bruteNames[j + 1]))
+                except:
+                    print("\n{} don't need to level up.".format(bruteNames[j + 1]))
+
     driver.quit()
     print("\n--- END OF THE PROCESS ---")
 
