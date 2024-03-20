@@ -68,36 +68,6 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
                 printArray.append("Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]))
             except:
-                try:
-                    nextTournament = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rb3pee")))
-                    if not nextTournament.text == "Brute inscrite.":
-                        findTournament = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1l4w6pd")))
-                        tournament = WebDriverWait(findTournament, 10).until(EC.presence_of_element_located((By.TAG_NAME, "a")))
-                        tournament.click()
-                        del findTournament
-                        del tournament
-
-                        try:
-                            tournamentSeen = WebDriverWait(driver, 4).until(EC.presence_of_element_located((By.CLASS_NAME,"css-9w9xg7")))
-                            tournamentSeen.click()
-                            del tournamentSeen
-
-                            time.sleep(2)
-                        except:
-                            printArray.append("Account {}: {} - TOURNAMENT ALREADY SEEN".format(i + startAccount, bruteNames[j + 1]))
-
-                        driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
-                        try:
-                            WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
-                            hasFightsLeft = False
-
-                            printArray.append("Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]))
-                        except:
-                            tournamentRegistration = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-yb6hwx")))
-                            tournamentRegistration.click()
-                            del tournamentRegistration
-
-                            time.sleep(2)
                     else: 
                         printArray.append("Account {}: {} - Already registered in the tournament.".format(i + startAccount, bruteNames[j + 1]))
                     del nextTournament
