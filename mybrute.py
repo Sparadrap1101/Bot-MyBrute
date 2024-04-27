@@ -131,7 +131,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             del randomOpponent
                             del opponents
                             
-                            time.sleep(1)
+                            time.sleep(3)
 
                             runFight = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-3iozau")))
                             runFight.click()
@@ -165,7 +165,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             for info in printArray:
                 print(info)
 
-        time.sleep(2)
+        time.sleep(4)
 
         accountButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
         action = ActionChains(driver)
