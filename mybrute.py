@@ -30,7 +30,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
         try:
             driver.get("https://eternaltwin.org/login")
-            time.sleep(1)
+            time.sleep(3)
             loginForm = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"ng-pristine")))
             username = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "login")))
             username.send_keys(bruteNames[0])
@@ -44,7 +44,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             del button
         except:
             print("Account {}: LOGIN ACCOUNT FAILED".format(i + startAccount))
-        
+
         time.sleep(1)
 
         driver.get("https://brute.eternaltwin.org/")
@@ -137,6 +137,8 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             runFight.click()
                             del runFight
 
+                            time.sleep(2.5)
+
                             fightCounter += 1
                         except:
                             printArray.append("Account {}: {} - FIGHT FAILED".format(i + startAccount, bruteNames[j + 1]))
@@ -171,7 +173,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         del accountButton
         del action
 
-        time.sleep(1)
+        time.sleep(1.5)
 
         logout = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID,"Compte-action-0")))
         logoutButton = WebDriverWait(logout, 10).until(EC.presence_of_element_located((By.TAG_NAME, "button")))
