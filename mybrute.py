@@ -31,12 +31,12 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         try:
             driver.get("https://eternaltwin.org/login")
             time.sleep(3)
-            loginForm = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"ng-pristine")))
-            username = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "login")))
+            loginForm = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"ng-pristine")))
+            username = WebDriverWait(loginForm, 15).until(EC.presence_of_element_located((By.NAME, "login")))
             username.send_keys(bruteNames[0])
-            password = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "password")))
+            password = WebDriverWait(loginForm, 15).until(EC.presence_of_element_located((By.NAME, "password")))
             password.send_keys(PASSWORD)
-            button = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "sign_in")))
+            button = WebDriverWait(loginForm, 15).until(EC.presence_of_element_located((By.NAME, "sign_in")))
             button.click()
             del loginForm
             del username
@@ -48,11 +48,11 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         time.sleep(1)
 
         driver.get("https://brute.eternaltwin.org/")
-        loginButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"MuiButtonBase-root")))
+        loginButton = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"MuiButtonBase-root")))
         loginButton.click()
         del loginButton
 
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
+        WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
 
         time.sleep(1)
 
@@ -69,10 +69,10 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                 printArray.append("Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]))
             except:
                 try:
-                    nextTournament = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rb3pee")))
+                    nextTournament = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rb3pee")))
                     if not nextTournament.text == "Brute inscrite.":
-                        findTournament = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1l4w6pd")))
-                        tournament = WebDriverWait(findTournament, 10).until(EC.presence_of_element_located((By.TAG_NAME, "a")))
+                        findTournament = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1l4w6pd")))
+                        tournament = WebDriverWait(findTournament, 15).until(EC.presence_of_element_located((By.TAG_NAME, "a")))
                         tournament.click()
                         del findTournament
                         del tournament
@@ -93,7 +93,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
                             printArray.append("Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]))
                         except:
-                            tournamentRegistration = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-yb6hwx")))
+                            tournamentRegistration = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-yb6hwx")))
                             tournamentRegistration.click()
                             del tournamentRegistration
 
@@ -124,7 +124,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
                             time.sleep(4)
 
-                            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-xxeckd")))
+                            WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-xxeckd")))
                             randomOpponent = random.randint(0, 5)
                             opponents = driver.find_elements(By.CLASS_NAME, "css-rpybyc")
                             opponents[randomOpponent].click()
@@ -133,7 +133,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             
                             time.sleep(3)
 
-                            runFight = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-3iozau")))
+                            runFight = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-3iozau")))
                             runFight.click()
                             del runFight
 
@@ -167,7 +167,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
         time.sleep(4)
 
-        accountButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
+        accountButton = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
         action = ActionChains(driver)
         action.move_to_element(accountButton).perform()
         del accountButton
@@ -175,8 +175,8 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
         time.sleep(1.5)
 
-        logout = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID,"Compte-action-0")))
-        logoutButton = WebDriverWait(logout, 10).until(EC.presence_of_element_located((By.TAG_NAME, "button")))
+        logout = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.ID,"Compte-action-0")))
+        logoutButton = WebDriverWait(logout, 15).until(EC.presence_of_element_located((By.TAG_NAME, "button")))
         logoutButton.click()
         del logout
         del logoutButton
