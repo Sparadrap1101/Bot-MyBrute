@@ -11,6 +11,18 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
+class color:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
+
 def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
     PASSWORD = os.getenv('PASSWORD')
     options = Options()
@@ -269,21 +281,6 @@ if __name__ == "__main__":
     executionTime = time.time() - startTime
     print("\n--- All accounts has been processed in {} seconds. ---".format(round(executionTime, 2)))
 
-
 # Next steps:
 ## Donner le nbre de win sur les tournois et contre quel lvl j'ai perdu ?
 ## Gérer les combats contre le boss de clan sur certains compte (autre script ? Qqc de spécial dans le 'accounts' ?)
-
-# class color:
-#    PURPLE = '\033[95m'
-#    CYAN = '\033[96m'
-#    DARKCYAN = '\033[36m'
-#    BLUE = '\033[94m'
-#    GREEN = '\033[92m'
-#    YELLOW = '\033[93m'
-#    RED = '\033[91m'
-#    BOLD = '\033[1m'
-#    UNDERLINE = '\033[4m'
-#    END = '\033[0m'
-
-# print(color.BOLD + 'Hello, World!' + color.END)
