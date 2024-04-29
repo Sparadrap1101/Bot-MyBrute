@@ -50,6 +50,12 @@ $ cd <YourPath>/Bot-MyBrute
 $ python3 -m venv myVenv
 ```
 
+- Enter the python environment:
+
+```
+$ source myVenv/bin/activate
+```
+
 ```
 $ pip install selenium
 ```
