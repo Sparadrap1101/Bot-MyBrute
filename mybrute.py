@@ -38,7 +38,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
     for i in range(nbreOfAccounts):
         quitDriver += 1
         bruteNames = accountsArray[i + startAccount].split(" ")
-        print("\nAccount {}: Brute names = {}".format(i + startAccount, bruteNames))
+        print(color.CYAN + "\nAccount {}: Brute names = ".format(i + startAccount) + color.BOLD + "{}".format(bruteNames) + color.END)
 
         try:
             driver.get("https://eternaltwin.org/login")
@@ -197,7 +197,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
         if quitDriver == 3:
             driver.quit()
-            print("\n--- DRIVER QUITTED ---")
+            print(color.RED + color.BOLD + "\n--- DRIVER QUITTED ---" + color.END)
 
             time.sleep(2)
 
@@ -213,7 +213,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             quitDriver = 0
 
     driver.quit()
-    print("\n--- END OF THE PROCESS ---")
+    print(color.RED + color.BOLD + "\n--- END OF THE PROCESS ---" + color.END)
 
 if __name__ == "__main__":
 
@@ -279,7 +279,7 @@ if __name__ == "__main__":
     time.sleep(1)
 
     executionTime = time.time() - startTime
-    print("\n--- All accounts has been processed in {} seconds. ---".format(round(executionTime, 2)))
+    print(color.BOLD + "\n--- All accounts has been processed in {} seconds. ---".format(round(executionTime, 2)) + color.END)
 
 # Next steps:
 ## Donner le nbre de win sur les tournois et contre quel lvl j'ai perdu ?
