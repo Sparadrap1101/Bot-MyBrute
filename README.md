@@ -47,6 +47,10 @@ $ cd <YourPath>/Bot-MyBrute
 - On MacOS, create a python environment:
 
 ```
+$ python3 -m venv myVenv
+```
+
+```
 $ pip install selenium
 ```
 
