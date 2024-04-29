@@ -36,7 +36,7 @@ First, you need to install your chrome driver.
 
   - Download will start, unzip it and add the `chromedriver` file to this `Bot-MyBrute` folder.
 
-Then, we need to install the `selenium` library.
+Then, we need to create a python environment & install the dependencies.
 
 - Open a terminal and go to this folder:
 
@@ -44,7 +44,7 @@ Then, we need to install the `selenium` library.
 $ cd <YourPath>/Bot-MyBrute
 ```
 
-- Install `selenium` on Windows:
+- On MacOS, create a python environment:
 
 ```
 $ pip install selenium
