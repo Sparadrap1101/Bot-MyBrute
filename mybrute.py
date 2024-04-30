@@ -24,6 +24,15 @@ class color:
    END = '\033[0m'
 
 def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
+    print(color.RED + "Hello" + color.END)
+    print(color.RED + color.BOLD + "Hello" + color.END)
+    print(color.CYAN + "Hello" + color.END)
+    print(color.PURPLE + "Hello" + color.END)
+    print(color.YELLOW + color.UNDERLINE + "Hello" + color.END)
+    print(color.YELLOW + color.BOLD + "Hello" + color.END)
+    print(color.GREEN + color.UNDERLINE + "Hello" + color.END)
+    print(color.GREEN + color.BOLD + "Hello" + color.END)
+    
     PASSWORD = os.getenv('PASSWORD')
     options = Options()
     prefs = {"profile.managed_default_content_settings.images": 2}
@@ -96,7 +105,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
                             time.sleep(2)
                         except:
-                            printArray.append("Account {}: {} - TOURNAMENT ALREADY SEEN".format(i + startAccount, bruteNames[j + 1]))
+                            printArray.append(color.RED + "Account {}: {} - TOURNAMENT ALREADY SEEN".format(i + startAccount, bruteNames[j + 1]) + color.END)
 
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
                         try:
@@ -114,14 +123,14 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                         printArray.append("Account {}: {} - Already registered in the tournament.".format(i + startAccount, bruteNames[j + 1]))
                     del nextTournament
                 except:
-                    printArray.append("Account {}: {} - TOURNAMENT REGISTRATION FAILED!".format(i + startAccount, bruteNames[j + 1]))
+                    printArray.append(color.RED + "Account {}: {} - TOURNAMENT REGISTRATION FAILED!".format(i + startAccount, bruteNames[j + 1]) + color.END)
 
             fightCounter = 0
             try:
                 fightsWonBefore = int(driver.find_elements(By.CLASS_NAME, "css-a0dt3d")[1].text)
             except:
                 fightsWonBefore = 0
-                printArray.append("Account {}: {} - FIGHT COUNTER FAILED".format(i + startAccount, bruteNames[j + 1]))
+                printArray.append(color.RED + "Account {}: {} - FIGHT COUNTER FAILED".format(i + startAccount, bruteNames[j + 1]) + color.END)
 
             while hasFightsLeft:
                 try:
@@ -153,7 +162,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
                             fightCounter += 1
                         except:
-                            printArray.append("Account {}: {} - FIGHT FAILED".format(i + startAccount, bruteNames[j + 1]))
+                            printArray.append(color.RED + "Account {}: {} - FIGHT FAILED".format(i + startAccount, bruteNames[j + 1]) + color.END)
 
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
                     except:
@@ -172,7 +181,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                     printArray.append("Account {}: {} - Done. He won {}/{} fights!".format(i + startAccount, bruteNames[j + 1], wins, fightCounter))
                     del wins
                 except:
-                    printArray.append("Account {}: {} - FIGHT COUNTER FAILED".format(i + startAccount, bruteNames[j + 1]))
+                    printArray.append(color.RED + "Account {}: {} - FIGHT COUNTER FAILED".format(i + startAccount, bruteNames[j + 1]) + color.END)
 
             for info in printArray:
                 print(info)
