@@ -38,7 +38,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
     for i in range(nbreOfAccounts):
         quitDriver += 1
         bruteNames = accountsArray[i + startAccount].split(" ")
-        print(color.CYAN + "\nAccount {}: Brute names = ".format(i + startAccount) + color.BOLD + "{}".format(bruteNames) + color.END)
+        print(color.YELLOW + "\nAccount {}: Brute names = ".format(i + startAccount) + color.BOLD + "{}".format(bruteNames) + color.END)
 
         try:
             driver.get("https://eternaltwin.org/login")
@@ -55,7 +55,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             del password
             del button
         except:
-            print("Account {}: LOGIN ACCOUNT FAILED".format(i + startAccount))
+            print(color.RED + color.BOLD + "Account {}: LOGIN ACCOUNT FAILED".format(i + startAccount) + color.END)
 
         time.sleep(1)
 
@@ -78,7 +78,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                 WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
                 hasFightsLeft = False
 
-                printArray.append("Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]))
+                printArray.append(color.GREEN + color.BOLD + "Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]) + color.END)
             except:
                 try:
                     nextTournament = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rb3pee")))
@@ -103,7 +103,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
                             hasFightsLeft = False
 
-                            printArray.append("Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]))
+                            printArray.append(color.GREEN + color.BOLD + "Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]) + color.END)
                         except:
                             tournamentRegistration = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-yb6hwx")))
                             tournamentRegistration.click()
