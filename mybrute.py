@@ -24,15 +24,6 @@ class color:
    END = '\033[0m'
 
 def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
-    print(color.RED + "Hello" + color.END)
-    print(color.RED + color.BOLD + "Hello" + color.END)
-    print(color.CYAN + "Hello" + color.END)
-    print(color.PURPLE + "Hello" + color.END)
-    print(color.YELLOW + color.UNDERLINE + "Hello" + color.END)
-    print(color.YELLOW + color.BOLD + "Hello" + color.END)
-    print(color.GREEN + color.UNDERLINE + "Hello" + color.END)
-    print(color.GREEN + color.BOLD + "Hello" + color.END)
-    
     PASSWORD = os.getenv('PASSWORD')
     options = Options()
     prefs = {"profile.managed_default_content_settings.images": 2}
@@ -256,22 +247,22 @@ if __name__ == "__main__":
         startAcc1 = startAcc
         sizeArray1 = [0, 0, 720, 800]
         process1 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc1, nbrePerProcess, accountsArray, sizeArray1))
-        print("Process1: from account n°{} to account n°{}!".format(startAcc1, startAcc1 + nbrePerProcess))
+        print(color.BOLD + "Process1: from account n°{} to account n°{}!".format(startAcc1, startAcc1 + nbrePerProcess) + color.END)
 
         startAcc2 = startAcc + nbrePerProcess
         sizeArray2 = [720, 0, 720, 800]
         process2 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc2, nbrePerProcess, accountsArray, sizeArray2))
-        print("Process2: from account n°{} to account n°{}!".format(startAcc2, startAcc2 + nbrePerProcess))
+        print(color.BOLD + "Process2: from account n°{} to account n°{}!".format(startAcc2, startAcc2 + nbrePerProcess) + color.END)
 
         startAcc3 = startAcc + nbrePerProcess * 2
         sizeArray3 = [0, 0, 720, 800]
         process3 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc3, nbrePerProcess, accountsArray, sizeArray3))
-        print("Process3: from account n°{} to account n°{}!".format(startAcc3, startAcc3 + nbrePerProcess))
+        print(color.BOLD + "Process3: from account n°{} to account n°{}!".format(startAcc3, startAcc3 + nbrePerProcess) + color.END)
 
         startAcc4 = startAcc + nbrePerProcess * 3
         sizeArray4 = [720, 0, 720, 800]
         process4 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc4, len(accountsArray) - startAcc4, accountsArray, sizeArray4))
-        print("Process4: from account n°{} to account n°{}!".format(startAcc4, startAcc4 + len(accountsArray) - startAcc4))
+        print(color.BOLD + "Process4: from account n°{} to account n°{}!".format(startAcc4, startAcc4 + len(accountsArray) - startAcc4) + color.END)
 
         process1.start()
         process2.start()
