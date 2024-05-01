@@ -68,7 +68,7 @@ $ pip3 install python-dotenv selenium
 $ cp .env.example .env
 ```
 
-- Open the new `.env` file created and replace the templates by your `password` & `bruteNames` as shown in the file.
+- Open the new `.env` file created and replace the templates by your `PASSWORD`, `BASIC_ACCOUNTS` & `BEST_ACCOUNTS` as shown in the file.
 
 ## Run Bot
 
