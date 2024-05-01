@@ -126,7 +126,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             while hasFightsLeft:
                 try:
                     WebDriverWait(driver, 1.5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1dbhieh")))
-                    printArray.append(color.YELLOW + color.BOLD + "Account {}: {} - NEEDS TO LEVEL UP!".format(i + startAccount, bruteNames[j + 1]) + color.END)
+                    printArray.append(color.CYAN + color.BOLD + "Account {}: {} - NEEDS TO LEVEL UP!".format(i + startAccount, bruteNames[j + 1]) + color.END)
                     hasFightsLeft = False
                 except:
                     try:
@@ -169,7 +169,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                     del fightsWonBefore
                     del fightsWonAfter
 
-                    printArray.append(color.CYAN + "Account {}: {} - Done. He won {}/{} fights!".format(i + startAccount, bruteNames[j + 1], wins, fightCounter) + color.END)
+                    printArray.append(color.YELLOW + "Account {}: {} - Done. He won {}/{} fights!".format(i + startAccount, bruteNames[j + 1], wins, fightCounter) + color.END)
                     del wins
                 except:
                     printArray.append(color.RED + "Account {}: {} - FIGHT COUNTER FAILED".format(i + startAccount, bruteNames[j + 1]) + color.END)
