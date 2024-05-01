@@ -56,14 +56,10 @@ $ python3 -m venv myVenv
 $ source myVenv/bin/activate
 ```
 
-```
-$ pip install selenium
-```
-
-- Install `selenium` on MacOS:
+- Install the dependencies:
 
 ```
-$ pip3 install selenium
+$ pip3 install python-dotenv selenium
 ```
 
 - Now create a copy of the environment file:
