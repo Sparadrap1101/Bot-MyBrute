@@ -177,7 +177,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             for info in printArray:
                 print(info)
 
-        time.sleep(4)
+        time.sleep(2)
 
         accountButton = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
         action = ActionChains(driver)
