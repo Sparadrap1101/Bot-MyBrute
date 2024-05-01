@@ -169,7 +169,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                     del fightsWonBefore
                     del fightsWonAfter
 
-                    printArray.append(color.YELLOW + "Account {}: {} - Done. He won {}/{} fights!".format(i + startAccount, bruteNames[j + 1], wins, fightCounter) + color.END)
+                    printArray.append(color.CYAN + "Account {}: {} - Done. He won {}/{} fights!".format(i + startAccount, bruteNames[j + 1], wins, fightCounter) + color.END)
                     del wins
                 except:
                     printArray.append(color.RED + "Account {}: {} - FIGHT COUNTER FAILED".format(i + startAccount, bruteNames[j + 1]) + color.END)
