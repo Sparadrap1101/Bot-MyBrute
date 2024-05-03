@@ -143,7 +143,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             del randomOpponent
                             del opponents
                             
-                            time.sleep(10)
+                            time.sleep(3)
 
                             runFight = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-3iozau")))
                             runFight.click()
