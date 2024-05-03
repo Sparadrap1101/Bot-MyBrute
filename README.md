@@ -93,4 +93,3 @@ $ source myVenv/bin/activate
 ```
 $ python3 mybrute.py
 ```
-When a brute needs to level up, you will receive the notification `{BruteName} NEEDS TO LEVEL UP`, and the bot will go to the next Brute. You can then level up the brute yourself and restart the bot starting with the account index you want in order to finish the remaining fights.
