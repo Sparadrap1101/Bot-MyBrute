@@ -82,10 +82,15 @@ All is set-up! You can now run the bot each time you want to automate your gamep
 $ cd <YourPath>/Bot-MyBrute
 ```
 
+- Make sure you are in the python environment *(with `(myVenv)` on the left)* or run it:
+
+```
+$ source myVenv/bin/activate
+```
+
 - Run the bot:
 
 ```
 $ python3 mybrute.py
 ```
-
 When a brute needs to level up, you will receive the notification `{BruteName} NEEDS TO LEVEL UP`, and the bot will go to the next Brute. You can then level up the brute yourself and restart the bot starting with the account index you want in order to finish the remaining fights.
