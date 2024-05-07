@@ -94,4 +94,4 @@ $ source myVenv/bin/activate
 $ python3 mybrute.py
 ```
 
-When a brute needs to level up, you will receive the notification `{BruteName} - NEEDS TO LEVEL UP`
+When a brute needs to level up, you will receive the notification `{BruteName} - NEEDS TO LEVEL UP`, and the bot will go to the next Brute.
