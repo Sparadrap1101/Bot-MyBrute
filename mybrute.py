@@ -94,7 +94,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             tournamentSeen.click()
                             del tournamentSeen
 
-                            time.sleep(4)
+                            time.sleep(2)
                         except:
                             printArray.append(color.RED + "Account {}: {} - TOURNAMENT ALREADY SEEN".format(i + startAccount, bruteNames[j + 1]) + color.END)
 
@@ -134,7 +134,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                         try:
                             driver.get("https://brute.eternaltwin.org/{}/arena".format(bruteNames[j + 1]))
 
-                            time.sleep(2)
+                            time.sleep(4)
 
                             WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-xxeckd")))
                             randomOpponent = random.randint(0, 5)
@@ -177,7 +177,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             for info in printArray:
                 print(info)
 
-        time.sleep(8)
+        time.sleep(4)
 
         accountButton = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
         action = ActionChains(driver)
