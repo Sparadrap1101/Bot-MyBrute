@@ -110,6 +110,8 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             del tournamentRegistration
 
                             time.sleep(7)
+                    else: 
+                        printArray.append("Account {}: {} - Already registered in the tournament.".format(i + startAccount, bruteNames[j + 1]))
                     del nextTournament
                 except:
                     printArray.append(color.RED + "Account {}: {} - TOURNAMENT REGISTRATION FAILED!".format(i + startAccount, bruteNames[j + 1]) + color.END)
