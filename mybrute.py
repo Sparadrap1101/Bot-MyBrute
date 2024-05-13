@@ -75,7 +75,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
             hasFightsLeft = True
             try:
-                WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
+                WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
                 hasFightsLeft = False
 
                 printArray.append(color.GREEN + color.BOLD + "Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]) + color.END)
@@ -94,7 +94,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             tournamentSeen.click()
                             del tournamentSeen
 
-                            time.sleep(2)
+                            time.sleep(4)
                         except:
                             printArray.append(color.RED + "Account {}: {} - TOURNAMENT ALREADY SEEN".format(i + startAccount, bruteNames[j + 1]) + color.END)
 
@@ -109,7 +109,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             tournamentRegistration.click()
                             del tournamentRegistration
 
-                            time.sleep(2)
+                            time.sleep(4)
                     else: 
                         printArray.append("Account {}: {} - Already registered in the tournament.".format(i + startAccount, bruteNames[j + 1]))
                     del nextTournament
