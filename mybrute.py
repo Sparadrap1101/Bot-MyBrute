@@ -66,7 +66,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
         WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
 
-        time.sleep(1)
+        time.sleep(4)
 
         for j in range(len(bruteNames) - 1):
             printArray = []
@@ -109,7 +109,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             tournamentRegistration.click()
                             del tournamentRegistration
 
-                            time.sleep(2)
+                            time.sleep(4)
                     else: 
                         printArray.append("Account {}: {} - Already registered in the tournament.".format(i + startAccount, bruteNames[j + 1]))
                     del nextTournament
@@ -143,7 +143,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             del randomOpponent
                             del opponents
                             
-                            time.sleep(3)
+                            time.sleep(5)
 
                             runFight = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-3iozau")))
                             runFight.click()
