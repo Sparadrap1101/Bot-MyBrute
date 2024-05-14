@@ -66,7 +66,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
         WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
 
-        time.sleep(4)
+        time.sleep(1)
 
         for j in range(len(bruteNames) - 1):
             printArray = []
@@ -109,7 +109,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             tournamentRegistration.click()
                             del tournamentRegistration
 
-                            time.sleep(4)
+                            time.sleep(2)
                     else: 
                         printArray.append("Account {}: {} - Already registered in the tournament.".format(i + startAccount, bruteNames[j + 1]))
                     del nextTournament
@@ -143,7 +143,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             del randomOpponent
                             del opponents
                             
-                            time.sleep(5)
+                            time.sleep(3)
 
                             runFight = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-3iozau")))
                             runFight.click()
@@ -245,22 +245,22 @@ if __name__ == "__main__":
         nbrePerProcess = int(nbreAccounts / 4)
 
         startAcc1 = startAcc
-        sizeArray1 = [0, 0, 720, 800]
+        sizeArray1 = [0, 0, 720, 400]
         process1 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc1, nbrePerProcess, accountsArray, sizeArray1))
         print(color.BOLD + "Process1: from account n°{} to account n°{}!".format(startAcc1, startAcc1 + nbrePerProcess) + color.END)
 
         startAcc2 = startAcc + nbrePerProcess
-        sizeArray2 = [720, 0, 720, 800]
+        sizeArray2 = [0, 0, 720, 800]
         process2 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc2, nbrePerProcess, accountsArray, sizeArray2))
         print(color.BOLD + "Process2: from account n°{} to account n°{}!".format(startAcc2, startAcc2 + nbrePerProcess) + color.END)
 
         startAcc3 = startAcc + nbrePerProcess * 2
-        sizeArray3 = [0, 0, 720, 800]
+        sizeArray3 = [0, 0, 720, 400]
         process3 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc3, nbrePerProcess, accountsArray, sizeArray3))
         print(color.BOLD + "Process3: from account n°{} to account n°{}!".format(startAcc3, startAcc3 + nbrePerProcess) + color.END)
 
         startAcc4 = startAcc + nbrePerProcess * 3
-        sizeArray4 = [720, 0, 720, 800]
+        sizeArray4 = [0, 0, 720, 800]
         process4 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc4, len(accountsArray) - startAcc4, accountsArray, sizeArray4))
         print(color.BOLD + "Process4: from account n°{} to account n°{}!".format(startAcc4, startAcc4 + len(accountsArray) - startAcc4) + color.END)
 
