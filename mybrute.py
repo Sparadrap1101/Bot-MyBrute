@@ -125,7 +125,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
             while hasFightsLeft:
                 try:
-                    WebDriverWait(driver, 1.5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1dbhieh")))
+                    WebDriverWait(driver, 1.5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1i5638y")))
                     printArray.append(color.CYAN + color.BOLD + "Account {}: {} - NEEDS TO LEVEL UP!".format(i + startAccount, bruteNames[j + 1]) + color.END)
                     hasFightsLeft = False
                 except:
