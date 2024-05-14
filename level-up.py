@@ -58,7 +58,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             try:
                 time.sleep(1)
                 
-                levelUp = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1dbhieh")))
+                levelUp = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1i5638y")))
                 levelUp.click()
                 del levelUp
                 print("\n{} NEEDS TO LEVEL UP:".format(bruteNames[j + 1]))
