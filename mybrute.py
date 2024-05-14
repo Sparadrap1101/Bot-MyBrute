@@ -245,22 +245,22 @@ if __name__ == "__main__":
         nbrePerProcess = int(nbreAccounts / 4)
 
         startAcc1 = startAcc
-        sizeArray1 = [0, 0, 720, 400]
+        sizeArray1 = [0, 0, 720, 800]
         process1 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc1, nbrePerProcess, accountsArray, sizeArray1))
         print(color.BOLD + "Process1: from account n°{} to account n°{}!".format(startAcc1, startAcc1 + nbrePerProcess) + color.END)
 
         startAcc2 = startAcc + nbrePerProcess
-        sizeArray2 = [0, 0, 720, 800]
+        sizeArray2 = [720, 0, 720, 800]
         process2 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc2, nbrePerProcess, accountsArray, sizeArray2))
         print(color.BOLD + "Process2: from account n°{} to account n°{}!".format(startAcc2, startAcc2 + nbrePerProcess) + color.END)
 
         startAcc3 = startAcc + nbrePerProcess * 2
-        sizeArray3 = [0, 0, 720, 400]
+        sizeArray3 = [0, 0, 720, 800]
         process3 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc3, nbrePerProcess, accountsArray, sizeArray3))
         print(color.BOLD + "Process3: from account n°{} to account n°{}!".format(startAcc3, startAcc3 + nbrePerProcess) + color.END)
 
         startAcc4 = startAcc + nbrePerProcess * 3
-        sizeArray4 = [0, 0, 720, 800]
+        sizeArray4 = [720, 0, 720, 800]
         process4 = multiprocessing.Process(target=ProceedAccounts, args=(startAcc4, len(accountsArray) - startAcc4, accountsArray, sizeArray4))
         print(color.BOLD + "Process4: from account n°{} to account n°{}!".format(startAcc4, startAcc4 + len(accountsArray) - startAcc4) + color.END)
 
