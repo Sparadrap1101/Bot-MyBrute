@@ -108,7 +108,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                             tournamentRegistration.click()
                             del tournamentRegistration
 
-                            time.sleep(5)
+                            time.sleep(2)
                     else: 
                         printArray.append("Account {}: {} - Already registered in the tournament.".format(i + startAccount, bruteNames[j + 1]))
                     del nextTournament
@@ -124,7 +124,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
             while hasFightsLeft:
                 try:
-                    WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1i5638y")))
+                    WebDriverWait(driver, 1.5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1i5638y")))
                     printArray.append(color.CYAN + color.BOLD + "Account {}: {} - NEEDS TO LEVEL UP!".format(i + startAccount, bruteNames[j + 1]) + color.END)
                     hasFightsLeft = False
                 except:
