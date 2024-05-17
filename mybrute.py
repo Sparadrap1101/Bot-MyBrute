@@ -84,7 +84,6 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                     nextTournament = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rb3pee")))
                     if not nextTournament.text == "Brute inscrite.":
                         findTournament = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1l4w6pd")))
-                        tournament = WebDriverWait(findTournament, 15).until(EC.presence_of_element_located((By.TAG_NAME, "a")))
                         tournament.click()
                         del tournament
 
