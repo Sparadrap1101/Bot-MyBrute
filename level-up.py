@@ -102,7 +102,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                     print("\033[4m" + "\nLast destiny choice:" + "\033[0m" + " {}".format(choice2))
 
                 driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
-                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-xi606m")))
+                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1n2tkhe")))
                 driver.execute_script("window.scrollTo(0, 250)")
                 waitChoice = True
             except:
