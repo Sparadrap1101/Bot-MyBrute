@@ -102,7 +102,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
                         try:
-                            WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
+                            WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-ddbink")))
                             hasFightsLeft = False
 
                             printArray.append(color.GREEN + color.BOLD + "Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]) + color.END)
