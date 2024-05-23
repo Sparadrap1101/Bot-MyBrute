@@ -87,6 +87,8 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                         tournament.click()
                         del tournament
 
+                        time.sleep(1)
+
                         try:
                             tournamentSeen = WebDriverWait(driver, 4).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1i5638y")))
                             tournamentSeen.click()
