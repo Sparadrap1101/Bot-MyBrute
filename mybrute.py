@@ -98,6 +98,8 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                         except:
                             printArray.append(color.RED + "Account {}: {} - TOURNAMENT ALREADY SEEN".format(i + startAccount, bruteNames[j + 1]) + color.END)
 
+                        time.sleep(1)
+
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
                         try:
                             WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-v3tyeg")))
