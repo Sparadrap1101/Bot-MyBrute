@@ -82,6 +82,9 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             except:
                 try:
                     try:
+                        WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rb3pee")))
+                        printArray.append("Account {}: {} - Already registered in the tournament.".format(i + startAccount, bruteNames[j + 1]))
+
                             time.sleep(0.1)
 
                     except:
