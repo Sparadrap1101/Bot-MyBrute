@@ -81,8 +81,6 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                 printArray.append(color.GREEN + color.BOLD + "Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]) + color.END)
             except:
                 try:
-                    nextTournament = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rb3pee")))
-                    if not nextTournament.text == "Brute inscrite.":
                         tournament = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-12xg8t0")))
                         tournament.click()
                         del tournament
