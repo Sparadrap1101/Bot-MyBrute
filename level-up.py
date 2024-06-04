@@ -65,6 +65,8 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
                 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-rqbvn6")))
 
+                time.sleep(1)
+
                 choices = driver.find_elements(By.CLASS_NAME, "css-12z2g5x")
                 lastChoice = 0
                 try:
