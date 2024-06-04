@@ -102,3 +102,6 @@ When a brute needs to level up, you will receive the notification `{BruteName} -
 $ python3 level-up.py
 ```
 
+Finally you can restart the bot at with the account index you want in order to finish the remaining fights.
+
+**Good game & have fun!**
