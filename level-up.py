@@ -134,7 +134,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                     driver.get("https://brute.eternaltwin.org/{}/level-up".format(bruteNames[j + 1]))
 
                     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-rqbvn6")))
-                    choices = driver.find_elements(By.CLASS_NAME, "css-1wi9ne9")
+                    choices = driver.find_elements(By.CLASS_NAME, "css-rqbvn6")
                     choices[1].click()
                     waitChoice = False
 
