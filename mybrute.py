@@ -135,7 +135,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                     hasFightsLeft = False
                 except:
                     try:
-                        WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-2lusyn")))
+                        WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rg2sfg")))
                         try:
                             driver.get("https://brute.eternaltwin.org/{}/arena".format(bruteNames[j + 1]))
 
