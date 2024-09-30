@@ -36,7 +36,7 @@ while foundAccount == False:
     verify = driver.find_element(By.CLASS_NAME, "button").text
 
     driver.get("https://brute.eternaltwin.org/")
-    loginButton = driver.find_element(By.CLASS_NAME,"MuiButtonBase-root")
+    loginButton = driver.find_element(By.CLASS_NAME,"css-1u8mnsn")
     loginButton.click()
 
     if verify == accountName:

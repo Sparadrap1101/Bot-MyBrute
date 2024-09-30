@@ -27,7 +27,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
         try:
             driver.get("https://eternaltwin.org/login")
-            time.sleep(1)
+            time.sleep(3)
             loginForm = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"ng-pristine")))
             username = WebDriverWait(loginForm, 10).until(EC.presence_of_element_located((By.NAME, "login")))
             username.send_keys(bruteNames[0])
@@ -41,13 +41,15 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             del button
         except:
             print("Account {}: LOGIN ACCOUNT FAILED".format(i + startAccount))
-        
-        time.sleep(1)
+
+        time.sleep(3)
 
         driver.get("https://brute.eternaltwin.org/")
-        loginButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"MuiButtonBase-root")))
+        loginButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1u8mnsn")))
         loginButton.click()
         del loginButton
+
+        time.sleep(3)
 
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
 
@@ -57,8 +59,8 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             waitChoice = False
             try:
                 time.sleep(1)
-                
-                levelUp = WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1i5638y")))
+
+                levelUp = WebDriverWait(driver, 4).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1i5638y")))
                 levelUp.click()
                 del levelUp
                 print("\n{} NEEDS TO LEVEL UP:".format(bruteNames[j + 1]))
@@ -127,7 +129,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                     choices[0].click()
                     waitChoice = False
 
-                    time.sleep(1)
+                    time.sleep(2.5)
 
                 elif userChoice == "1":
                     print("\033[1m" + "\n- You chose {}!".format(choice2) + "\033[0m")
@@ -138,7 +140,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                     choices[1].click()
                     waitChoice = False
 
-                    time.sleep(1)
+                    time.sleep(2.5)
 
                 elif userChoice == "exit":
                     print("Exiting, go to the next brute...")
@@ -156,13 +158,15 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         del accountButton
         del action
 
-        time.sleep(1)
+        time.sleep(1.5)
 
         logout = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID,"Compte-action-0")))
         logoutButton = WebDriverWait(logout, 10).until(EC.presence_of_element_located((By.TAG_NAME, "button")))
         logoutButton.click()
         del logout
         del logoutButton
+
+        time.sleep(1.5)
 
     driver.quit()
     print("\n--- END OF THE PROCESS ---")

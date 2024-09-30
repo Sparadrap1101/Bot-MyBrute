@@ -1,7 +1,6 @@
 import os
 import gc
 import time
-import random
 import multiprocessing
 from dotenv import load_dotenv
 from selenium import webdriver
@@ -57,16 +56,16 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         except:
             print(color.RED + color.BOLD + "Account {}: LOGIN ACCOUNT FAILED".format(i + startAccount) + color.END)
 
-        time.sleep(1)
+        time.sleep(3)
 
         driver.get("https://brute.eternaltwin.org/")
-        loginButton = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"MuiButtonBase-root")))
+        loginButton = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1u8mnsn")))
         loginButton.click()
         del loginButton
 
         WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-17tdeih")))
 
-        time.sleep(1)
+        time.sleep(3)
 
         for j in range(len(bruteNames) - 1):
             printArray = []
@@ -75,27 +74,34 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
             driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
             hasFightsLeft = True
             try:
-                WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-ddbink")))
+                WebDriverWait(driver, 4).until(EC.presence_of_element_located((By.CLASS_NAME,"css-ddbink")))
                 hasFightsLeft = False
 
                 printArray.append(color.GREEN + color.BOLD + "Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]) + color.END)
             except:
                 try:
                     try:
-                        WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rb3pee")))
+                        WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-199af5o")))
                         printArray.append("Account {}: {} - Already registered in the tournament.".format(i + startAccount, bruteNames[j + 1]))
 
+                        try:
+                            tournamentRegistration = WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1i7gnni")))
+                            tournamentRegistration.click()
+                            del tournamentRegistration
+
+                            time.sleep(1.5)
+                        except:
                             time.sleep(0.1)
 
                     except:
-                        tournament = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-12xg8t0")))
+                        tournament = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-njj4fx")))
                         tournament.click()
                         del tournament
 
                         time.sleep(1)
 
                         try:
-                            tournamentSeen = WebDriverWait(driver, 4).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1i5638y")))
+                            tournamentSeen = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1i5638y")))
                             tournamentSeen.click()
                             del tournamentSeen
 
@@ -107,7 +113,7 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
 
                         driver.get("https://brute.eternaltwin.org/{}/cell".format(bruteNames[j + 1]))
                         try:
-                            WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-ddbink")))
+                            WebDriverWait(driver, 4).until(EC.presence_of_element_located((By.CLASS_NAME,"css-ddbink")))
                             hasFightsLeft = False
 
                             printArray.append(color.GREEN + color.BOLD + "Account {}: {} - WINS A TOURNAMENT! HE CAN RANK UP!".format(i + startAccount, bruteNames[j + 1]) + color.END)
@@ -135,20 +141,25 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
                     hasFightsLeft = False
                 except:
                     try:
-                        WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rg2sfg")))
+                        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1rg2sfg")))
                         try:
                             driver.get("https://brute.eternaltwin.org/{}/arena".format(bruteNames[j + 1]))
 
-                            time.sleep(4)
-
                             WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-xxeckd")))
-                            randomOpponent = random.randint(0, 5)
-                            opponents = driver.find_elements(By.CLASS_NAME, "css-rpybyc")
-                            opponents[randomOpponent].click()
-                            del randomOpponent
+
+                            time.sleep(2)
+
+                            WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1xsto0d")))
+                            refocus = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-6ijp0d")))
+                            refocus.click()
+
+                            time.sleep(1)
+
+                            opponents = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-1dwc057")))
+                            opponents.click()
                             del opponents
-                            
-                            time.sleep(3)
+
+                            time.sleep(1.5)
 
                             runFight = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME,"css-aogft3")))
                             runFight.click()
@@ -197,6 +208,8 @@ def ProceedAccounts(startAccount, nbreOfAccounts, accountsArray, sizeArray):
         logoutButton.click()
         del logout
         del logoutButton
+
+        time.sleep(2)
 
         gc.collect()
 
